@@ -2,35 +2,45 @@ import java.util.*;
 
 public class Duke {
     public static void main(String[] args) {
+
         displayDuke();
+        lines();
+        helloMessage();
+        lines();
 
+        /*
+        Level-0, Greet
         levelZero();
+        */
 
+        /*
         // Level-1. Greet, Echo, Exit
         lines();
         helloMessage();
         lines();
         Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
+        String input = sc.nextLine().toLowerCase();
 
         while (!(input.equals("bye"))) {
             lines();
             System.out.println(input);
             lines();
             Scanner next = new Scanner(System.in);
-            input = next.nextLine();
+            input = next.nextLine().toLowerCase();
         }
         lines();
         byeMessage();
         lines();
+        */
 
+        /*
         // Level-2. Add, List
         lines();
         helloMessage();
         lines();
         String[] storeMessage = new String[100];
         Scanner scanner = new Scanner(System.in);
-        String command = scanner.nextLine();
+        String command = scanner.nextLine().toLowerCase();
         int i = 0;
         while(!(command.equals("bye"))) {
             if(command.equals("list")) {
@@ -40,19 +50,60 @@ public class Duke {
                 }
                 lines();
                 Scanner anotherCommand = new Scanner(System.in);
-                command = anotherCommand.nextLine();
+                command = anotherCommand.nextLine().toLowerCase();
             } else {
                 lines();
                 System.out.println("added: " + command);
                 lines();
                 storeMessage[i++] = command;
                 Scanner nextCommand = new Scanner(System.in);
-                command = nextCommand.nextLine();
+                command = nextCommand.nextLine().toLowerCase();
             }
         }
         lines();
         byeMessage();
         lines();
+        */
+
+        // Level-3. Mark as Done.
+        String[][] storeDescription = new String[100][3];
+        Scanner input = new Scanner(System.in);
+        String isDone = "false";
+
+        int index = 0;
+        for(int i = 0; ;i++) {
+            String userInput = input.nextLine();
+            String[] command = userInput.split(" ");
+            if (userInput.equals("list")) {
+                lines();
+                System.out.println("Here are the tasks in your list:");
+                for (int j = 0; j < index; j++) {
+                    String isChecked = storeDescription[j][2];
+                    System.out.println(j + 1 + ". [" + (isChecked.equals("true") ? "\u2713" : "\u2718") + "]" + storeDescription[j][1]);
+                }
+                lines();
+            } else if (command[0].equals("done")) {
+                int indexToBeMarked = Integer.parseInt(command[1]) - 1;
+                lines();
+                System.out.println("Nice! I've marked this task as done:");
+                // print out [tick] description
+                storeDescription[indexToBeMarked][2] = "true";
+                System.out.println("[" + "\u2713" + "] " + storeDescription[indexToBeMarked][1]);
+                lines();
+            } else if (userInput.equals("bye")){
+                lines();
+                byeMessage();
+                lines();
+            } else {
+                lines();
+                System.out.println("added: " + userInput);
+                lines();
+                storeDescription[index][0] = String.valueOf(index);
+                storeDescription[index][1] = userInput;
+                storeDescription[index++][2] = "false";
+            }
+        }
+
     }
 
     public static void displayDuke() {
@@ -84,4 +135,5 @@ public class Duke {
     public static void byeMessage() {
         System.out.println("Bye. Hope to see you again soon!");
     }
+
 }
