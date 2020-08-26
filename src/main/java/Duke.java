@@ -66,9 +66,9 @@ public class Duke {
         */
 
         // Level-3. Mark as Done.
+        // by default, all items added into list is not marked as done at first
         String[][] storeDescription = new String[100][3];
         Scanner input = new Scanner(System.in);
-        String isDone = "false";
 
         int index = 0;
         for(int i = 0; ;i++) {
@@ -86,14 +86,14 @@ public class Duke {
                 int indexToBeMarked = Integer.parseInt(command[1]) - 1;
                 lines();
                 System.out.println("Nice! I've marked this task as done:");
-                // print out [tick] description
                 storeDescription[indexToBeMarked][2] = "true";
                 System.out.println("[" + "\u2713" + "] " + storeDescription[indexToBeMarked][1]);
                 lines();
-            } else if (userInput.equals("bye")){
+            } else if (userInput.equals("bye")) {
                 lines();
                 byeMessage();
                 lines();
+                break;
             } else {
                 lines();
                 System.out.println("added: " + userInput);
@@ -103,7 +103,6 @@ public class Duke {
                 storeDescription[index++][2] = "false";
             }
         }
-
     }
 
     public static void displayDuke() {
