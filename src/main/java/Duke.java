@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class Duke {
     public static void main(String[] args) {
@@ -93,7 +93,7 @@ public class Duke {
                 lines();
                 byeMessage();
                 lines();
-                System.exit(0);
+                break;
             } else {
                 lines();
                 System.out.println("added: " + userInput);
