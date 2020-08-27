@@ -93,7 +93,7 @@ public class Duke {
                 lines();
                 byeMessage();
                 lines();
-                break;
+                System.exit(0);
             } else {
                 lines();
                 System.out.println("added: " + userInput);
