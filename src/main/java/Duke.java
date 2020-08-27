@@ -4,9 +4,9 @@ public class Duke {
     public static void main(String[] args) {
 
         displayDuke();
-        lines();
+        drawLines();
         helloMessage();
-        lines();
+        drawLines();
 
         /*
         Level-0, Greet
@@ -15,92 +15,91 @@ public class Duke {
 
         /*
         // Level-1. Greet, Echo, Exit
-        lines();
+        drawLines();
         helloMessage();
-        lines();
+        drawLines();
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine().toLowerCase();
 
         while (!(input.equals("bye"))) {
-            lines();
+            drawLines();
             System.out.println(input);
-            lines();
+            drawLines();
             Scanner next = new Scanner(System.in);
             input = next.nextLine().toLowerCase();
         }
-        lines();
+        drawLines();
         byeMessage();
-        lines();
+        drawLines();
         */
 
         /*
         // Level-2. Add, List
-        lines();
+        drawLines();
         helloMessage();
-        lines();
+        drawLines();
         String[] storeMessage = new String[100];
         Scanner scanner = new Scanner(System.in);
         String command = scanner.nextLine().toLowerCase();
         int i = 0;
         while(!(command.equals("bye"))) {
             if(command.equals("list")) {
-                lines();
+                drawLines();
                 for (int j = 0; j < i; j++) {
                     System.out.println(j + 1 + ". " + storeMessage[j]);
                 }
-                lines();
+                drawLines();
                 Scanner anotherCommand = new Scanner(System.in);
                 command = anotherCommand.nextLine().toLowerCase();
             } else {
-                lines();
+                drawLines();
                 System.out.println("added: " + command);
-                lines();
+                drawLines();
                 storeMessage[i++] = command;
                 Scanner nextCommand = new Scanner(System.in);
                 command = nextCommand.nextLine().toLowerCase();
             }
         }
-        lines();
+        drawLines();
         byeMessage();
-        lines();
+        drawLines();
         */
 
         // Level-3. Mark as Done.
-        // by default, all items added into list is not marked as done at first
         String[][] storeDescription = new String[100][3];
         Scanner input = new Scanner(System.in);
 
-        int index = 0;
+        int listIndex = 0;
         for (int i = 0; ;i++) {
             String userInput = input.nextLine();
-            String[] command = userInput.split(" ");
+            String[] commandGiven = userInput.split(" ");
             if (userInput.equals("list")) {
-                lines();
+                drawLines();
                 System.out.println("Here are the tasks in your list:");
-                for (int j = 0; j < index; j++) {
+                for (int j = 0; j < listIndex; j++) {
                     String isChecked = storeDescription[j][2];
                     System.out.println(j + 1 + ". [" + (isChecked.equals("true") ? "\u2713" : "\u2718") + "]" + storeDescription[j][1]);
                 }
-                lines();
-            } else if (command[0].equals("done")) {
-                int indexToBeMarked = Integer.parseInt(command[1]) - 1;
-                lines();
+                drawLines();
+            } else if (commandGiven[0].equals("done")) {
+                int indexToBeMarked = Integer.parseInt(commandGiven[1]) - 1;
+                drawLines();
                 System.out.println("Nice! I've marked this task as done:");
                 storeDescription[indexToBeMarked][2] = "true";
                 System.out.println("[" + "\u2713" + "] " + storeDescription[indexToBeMarked][1]);
-                lines();
+                drawLines();
             } else if (userInput.equals("bye")) {
-                lines();
+                drawLines();
                 byeMessage();
-                lines();
+                drawLines();
                 break;
             } else {
-                lines();
+                drawLines();
                 System.out.println("added: " + userInput);
-                lines();
-                storeDescription[index][0] = String.valueOf(index);
-                storeDescription[index][1] = userInput;
-                storeDescription[index++][2] = "false";
+                drawLines();
+                storeDescription[listIndex][0] = String.valueOf(listIndex);
+                storeDescription[listIndex][1] = userInput;
+                storeDescription[listIndex++][2] = "false";
             }
         }
     }
@@ -115,14 +114,14 @@ public class Duke {
     }
 
     public static void levelZero() {
-        lines();
+        drawLines();
         helloMessage();
-        lines();
+        drawLines();
         byeMessage();
-        lines();
+        drawLines();
     }
 
-    public static void lines() {
+    public static void drawLines() {
         System.out.println("____________________________________________________________");
     }
 
