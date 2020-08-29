@@ -66,7 +66,7 @@ public class Duke {
         */
 
         // Level-3. Mark as Done.
-        String[][] storeDescription = new String[100][3];
+        String[][] listDescription = new String[100][3];
         Scanner input = new Scanner(System.in);
 
         int listIndex = 0;
@@ -77,16 +77,16 @@ public class Duke {
                 drawLines();
                 System.out.println("Here are the tasks in your list:");
                 for (int j = 0; j < listIndex; j++) {
-                    String isChecked = storeDescription[j][2];
-                    System.out.println(j + 1 + ". [" + (isChecked.equals("true") ? "\u2713" : "\u2718") + "]" + storeDescription[j][1]);
+                    String isChecked = listDescription[j][2];
+                    System.out.println(j + 1 + ". [" + (isChecked.equals("true") ? "\u2713" : "\u2718") + "]" + listDescription[j][1]);
                 }
                 drawLines();
             } else if (commandGiven[0].equals("done")) {
                 int indexToBeMarked = Integer.parseInt(commandGiven[1]) - 1;
                 drawLines();
                 System.out.println("Nice! I've marked this task as done:");
-                storeDescription[indexToBeMarked][2] = "true";
-                System.out.println("[" + "\u2713" + "] " + storeDescription[indexToBeMarked][1]);
+                listDescription[indexToBeMarked][2] = "true";
+                System.out.println("[" + "\u2713" + "] " + listDescription[indexToBeMarked][1]);
                 drawLines();
             } else if (userInput.equals("bye")) {
                 drawLines();
@@ -97,9 +97,9 @@ public class Duke {
                 drawLines();
                 System.out.println("added: " + userInput);
                 drawLines();
-                storeDescription[listIndex][0] = String.valueOf(listIndex);
-                storeDescription[listIndex][1] = userInput;
-                storeDescription[listIndex++][2] = "false";
+                listDescription[listIndex][0] = String.valueOf(listIndex);
+                listDescription[listIndex][1] = userInput;
+                listDescription[listIndex++][2] = "false";
             }
         }
     }
