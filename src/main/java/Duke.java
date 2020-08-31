@@ -10,6 +10,13 @@ public class Duke {
         // Level 3
         drawLines();
         helloMessage();
+        System.out.println("Commands available: list, done, todo, event, deadline");
+        System.out.println("The expected format of input values: ");
+        System.out.println("list - Gives the list of data inputted");
+        System.out.println("done x - x is the index(pull up list) of data that you want to mark as done");
+        System.out.println("todo x - x is the data to be done");
+        System.out.println("deadline x /by y - x is the data and y is the deadline");
+        System.out.println("event x /at y - x is the data and y is the event date");
         drawLines();
 
         Scanner input = new Scanner(System.in);
