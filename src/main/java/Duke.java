@@ -9,6 +9,8 @@ public class Duke {
     public static void main(String[] args) {
         // Level 3
         drawLines();
+        displayDuke();
+        drawLines();
         helloMessage();
         System.out.println("Commands available: list, done, todo, event, deadline");
         System.out.println("The expected format of input values: ");
@@ -77,8 +79,17 @@ public class Duke {
         }
     }
 
+    public static void displayDuke() {
+        String logo = " ____        _        \n"
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  /\n"
+                + "|____/ \\,_|_|\\_\\___|\n";
+        System.out.println("Hello from\n" + logo);
+    }
+
     public static void drawLines() {
-        System.out.println("________");
+        System.out.println("--------------------------------------------------------------------------------------------");
     }
 
     public static void helloMessage() {
