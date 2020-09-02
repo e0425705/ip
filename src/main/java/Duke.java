@@ -1,4 +1,3 @@
-import taskPack.Task;
 import java.lang.String;
 import java.util.Scanner;
 
@@ -7,11 +6,12 @@ public class Duke {
     private static Task[] tasks = new Task[MAX_INT];
 
     public static void main(String[] args) {
-        // Level 3
+        // Level 4
         drawLines();
         displayDuke();
         drawLines();
         helloMessage();
+        drawLines();
         System.out.println("Commands available: list, done, todo, event, deadline");
         System.out.println("The expected format of input values: ");
         System.out.println("list - Gives the list of data inputted");
@@ -83,8 +83,8 @@ public class Duke {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  /\n"
-                + "|____/ \\,_|_|\\_\\___|\n";
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
     }
 
@@ -94,10 +94,11 @@ public class Duke {
 
     public static void helloMessage() {
         System.out.println("Hello! I'm Duke");
-        System.out.println("What can I do for you?");
+        System.out.println("What can I do for you today?");
     }
 
     public static void byeMessage() {
-        System.out.println("Bye. Hope to see you again soon!");
+        System.out.println("Bye. It is a pleasure serving you.");
+        System.out.println("Hope to see you again soon!");
     }
 }
