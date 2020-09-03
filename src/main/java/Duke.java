@@ -98,7 +98,7 @@ public class Duke {
     }
 
     public static void byeMessage() {
-        System.out.println("Bye. It is a pleasure serving you.");
+        System.out.println("Bye. It was a pleasure serving you.");
         System.out.println("Hope to see you again soon!");
     }
 }
