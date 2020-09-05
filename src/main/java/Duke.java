@@ -74,10 +74,13 @@ public class Duke {
                 drawLines();
                 commandsAvailable();
                 drawLines();
+            } else if (userInput.isEmpty()) {
+                drawLines();
+                System.out.println(" ☹ OOPS!!! The description of a task cannot be empty.");
+                drawLines();
             } else {
                 drawLines();
-                System.out.println("Sorry but command not found!");
-                commandsAvailable();
+                System.out.println(" ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                 drawLines();
             }
         }
