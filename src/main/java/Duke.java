@@ -41,7 +41,7 @@ public class Duke {
                 userInput = userInput.substring(4).trim();
                 tasks[listIndex] = new ToDo(userInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
-                System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
+                printListIndex(listIndex);
                 drawLines();
             } else if (userInput.toLowerCase().startsWith("deadline")) {
                 drawLines();
@@ -52,7 +52,7 @@ public class Duke {
                 userInput = userInput.substring(0, byIndex - 1);
                 tasks[listIndex] = new Deadline(userInput, dateInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
-                System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
+                printListIndex(listIndex);
                 drawLines();
             } else if (userInput.toLowerCase().startsWith("event")) {
                 drawLines();
@@ -63,7 +63,7 @@ public class Duke {
                 userInput = userInput.substring(0, byIndex - 1);
                 tasks[listIndex] = new Event(userInput, dateInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
-                System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
+                printListIndex(listIndex);
                 drawLines();
             } else if (userInput.toLowerCase().equals("bye")) {
                 drawLines();
@@ -84,6 +84,10 @@ public class Duke {
                 drawLines();
             }
         }
+    }
+
+    private static void printListIndex(int listIndex) {
+        System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
     }
 
     private static void commandsAvailable() {
