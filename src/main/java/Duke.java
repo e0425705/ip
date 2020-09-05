@@ -7,13 +7,9 @@ public class Duke {
 
     public static void main(String[] args) {
         // Level 4
-        drawLines();
         displayDuke();
-        drawLines();
         helloMessage();
-        drawLines();
         commandsAvailable();
-        drawLines();
 
         Scanner input = new Scanner(System.in);
         int listIndex = 0;
@@ -66,14 +62,10 @@ public class Duke {
                 printListIndex(listIndex);
                 drawLines();
             } else if (userInput.toLowerCase().equals("bye")) {
-                drawLines();
                 byeMessage();
-                drawLines();
                 break;
             } else if (userInput.toLowerCase().equals("help")) {
-                drawLines();
                 commandsAvailable();
-                drawLines();
             } else if (userInput.isEmpty()) {
                 drawLines();
                 System.out.println(" ☹ OOPS!!! The description of a task cannot be empty.");
@@ -91,6 +83,7 @@ public class Duke {
     }
 
     private static void commandsAvailable() {
+        drawLines();
         System.out.println("Commands available: list, done, todo, event, deadline");
         System.out.println("The expected format of input values: ");
         System.out.println("list - Gives the list of data inputted");
@@ -100,15 +93,18 @@ public class Duke {
         System.out.println("deadline x /by y - x is the data and y is the deadline");
         System.out.println("event x /at y - x is the data and y is the event date");
         System.out.println("bye - this terminates the program");
+        drawLines();
     }
 
     public static void displayDuke() {
+        drawLines();
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
+        drawLines();
     }
 
     public static void drawLines() {
@@ -116,12 +112,16 @@ public class Duke {
     }
 
     public static void helloMessage() {
+        drawLines();
         System.out.println("Hello! I'm Duke");
         System.out.println("What can I do for you today?");
+        drawLines();
     }
 
     public static void byeMessage() {
+        drawLines();
         System.out.println("Bye. It was a pleasure serving you.");
         System.out.println("Hope to see you again soon!");
+        drawLines();
     }
 }
