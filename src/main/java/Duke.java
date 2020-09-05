@@ -12,71 +12,87 @@ public class Duke {
         drawLines();
         helloMessage();
         drawLines();
-        System.out.println("Commands available: list, done, todo, event, deadline");
-        System.out.println("The expected format of input values: ");
-        System.out.println("list - Gives the list of data inputted");
-        System.out.println("done x - x is the index(pull up list) of data that you want to mark as done");
-        System.out.println("todo x - x is the data to be done");
-        System.out.println("deadline x /by y - x is the data and y is the deadline");
-        System.out.println("event x /at y - x is the data and y is the event date");
+        commandsAvailable();
         drawLines();
 
         Scanner input = new Scanner(System.in);
         int listIndex = 0;
-        for (int i = 0; ; i++) {
+
+        while (true) {
             String userInput = input.nextLine();
-            String commandGiven[] = userInput.split(" ");
-            if (userInput.equals("list")) {
+            String[] commandGiven = userInput.split(" ");
+            if (userInput.toLowerCase().equals("list")) {
                 drawLines();
                 System.out.println("Here are the tasks in your list:");
                 for (int j = 0; j < listIndex; j++) {
-                    System.out.println((j+1) + "." + tasks[j].toString());
+                    System.out.println((j + 1) + "." + tasks[j].toString());
                 }
                 drawLines();
-            } else if (userInput.startsWith("done")) {
+            } else if (userInput.toLowerCase().startsWith("done")) {
                 drawLines();
                 int taskDone = Integer.parseInt(commandGiven[1]);
                 tasks[taskDone - 1].markAsDone();
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println(tasks[taskDone - 1].toString());
                 drawLines();
-            } else if (commandGiven[0].equals("todo")) {
+            } else if (userInput.toLowerCase().startsWith("todo")) {
                 drawLines();
                 System.out.println("Got it. I've added this task:");
-                userInput = userInput.substring(5);
+                userInput = userInput.substring(4).trim();
                 tasks[listIndex] = new ToDo(userInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
                 System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
                 drawLines();
-            } else if (commandGiven[0].equals("deadline")) {
+            } else if (userInput.toLowerCase().startsWith("deadline")) {
                 drawLines();
                 System.out.println("Got it. I've added this task:");
-                userInput = userInput.substring(9);
+                userInput = userInput.substring(8).trim();
                 int byIndex = userInput.indexOf('/');
-                String dateInput = userInput.substring(byIndex + 4);
-                userInput = userInput.substring(0, byIndex-1);
+                String dateInput = userInput.substring(byIndex + 3).trim();
+                userInput = userInput.substring(0, byIndex - 1);
                 tasks[listIndex] = new Deadline(userInput, dateInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
                 System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
                 drawLines();
-            } else if (commandGiven[0].equals("event")) {
+            } else if (userInput.toLowerCase().startsWith("event")) {
                 drawLines();
                 System.out.println("Got it. I've added this task:");
-                userInput = userInput.substring(6);
+                userInput = userInput.substring(5).trim();
                 int byIndex = userInput.indexOf('/');
-                String dateInput = userInput.substring(byIndex + 4);
-                userInput = userInput.substring(0, byIndex-1);
+                String dateInput = userInput.substring(byIndex + 3).trim();
+                userInput = userInput.substring(0, byIndex - 1);
                 tasks[listIndex] = new Event(userInput, dateInput);
                 System.out.println("\t" + tasks[listIndex++].toString());
                 System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
                 drawLines();
-            } else if (userInput.equals("bye")) {
+            } else if (userInput.toLowerCase().equals("bye")) {
                 drawLines();
                 byeMessage();
                 drawLines();
                 break;
+            } else if (userInput.toLowerCase().equals("help")) {
+                drawLines();
+                commandsAvailable();
+                drawLines();
+            } else {
+                drawLines();
+                System.out.println("Sorry but command not found!");
+                commandsAvailable();
+                drawLines();
             }
         }
+    }
+
+    private static void commandsAvailable() {
+        System.out.println("Commands available: list, done, todo, event, deadline");
+        System.out.println("The expected format of input values: ");
+        System.out.println("list - Gives the list of data inputted");
+        System.out.println("help - this pulls out the commands available");
+        System.out.println("done x - x is the index(pull up list) of data that you want to mark as done");
+        System.out.println("todo x - x is the data to be done");
+        System.out.println("deadline x /by y - x is the data and y is the deadline");
+        System.out.println("event x /at y - x is the data and y is the event date");
+        System.out.println("bye - this terminates the program");
     }
 
     public static void displayDuke() {
