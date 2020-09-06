@@ -83,6 +83,12 @@ public class Duke {
                 System.out.println("The task you input has missing fields!");
                 System.out.println("Please do input 'help' for the commands and their respective input format.");
                 drawLines();
+            } catch (IndexOutOfBoundsException e){
+                drawLines();
+                System.out.println("Sorry the number of allowed task input is 100.");
+                printListIndex(listIndex);
+                System.out.println("Do email me at abc@gmail.com for increment of storage space!");
+                drawLines();
             } catch (Exception e) {
                 drawLines();
                 System.out.println("Something went wrong!");
