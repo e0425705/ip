@@ -83,8 +83,11 @@ public class Duke {
                 System.out.println("The task you input has missing fields!");
                 System.out.println("Please do input 'help' for the commands and their respective input format.");
                 drawLines();
+            } catch (Exception e) {
+                drawLines();
+                System.out.println("Something went wrong!");
+                drawLines();
             }
-
         }
     }
 
@@ -108,7 +111,11 @@ public class Duke {
 
     public static void displayDuke() {
         drawLines();
-        String logo = " ____        _        \n" + "|  _ \\ _   _| | _____ \n" + "| | | | | | | |/ / _ \\\n" + "| |_| | |_| |   <  __/\n" + "|____/ \\__,_|_|\\_\\___|\n";
+        String logo = " ____        _        \n"
+                + "|  _ \\ _   _| | _____ \n"
+                + "| | | | | | | |/ / _ \\\n"
+                + "| |_| | |_| |   <  __/\n"
+                + "|____/ \\__,_|_|\\_\\___|\n";
         System.out.println("Hello from\n" + logo);
         drawLines();
     }
