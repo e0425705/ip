@@ -1,3 +1,5 @@
+package duke;
+
 import java.lang.String;
 import java.util.Scanner;
 
@@ -132,7 +134,7 @@ public class Duke {
 
     public static void helloMessage() {
         drawLines();
-        System.out.println("Hello! I'm Duke");
+        System.out.println("Hello! I'm duke.Duke");
         System.out.println("What can I do for you today?");
         drawLines();
     }
