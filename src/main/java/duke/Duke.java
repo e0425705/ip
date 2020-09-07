@@ -33,18 +33,22 @@ public class Duke {
                         System.out.println((j + 1) + "." + tasks[j].toString());
                     }
                     drawLines();
-                } else if (userInput.toLowerCase().startsWith("done")) {
+                } else if (userInput.toLowerCase().trim().equals("todo")) {
                     drawLines();
+                    System.out.println(" ☹ OOPS!!! The description of a todo cannot be empty.");
+                    drawLines();
+                } else if (userInput.toLowerCase().startsWith("done")) {
                     int taskDone = Integer.parseInt(commandGiven[1]);
                     tasks[taskDone - 1].markAsDone();
+                    drawLines();
                     System.out.println("Nice! I've marked this task as done:");
                     System.out.println(tasks[taskDone - 1].toString());
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("todo")) {
-                    drawLines();
-                    System.out.println("Got it. I've added this task:");
                     userInput = userInput.substring(4).trim();
                     tasks[listIndex] = new ToDo(userInput);
+                    drawLines();
+                    System.out.println("Got it. I've added this task:");
                     System.out.println("\t" + tasks[listIndex++].toString());
                     printListIndex(listIndex);
                     drawLines();
@@ -75,26 +79,15 @@ public class Duke {
                     break;
                 } else if (userInput.toLowerCase().equals("help")) {
                     commandsAvailable();
-                } else if (userInput.isEmpty()) {
-                    drawLines();
-                    System.out.println(" ☹ OOPS!!! The description of a task cannot be empty.");
-                    drawLines();
                 } else {
                     drawLines();
                     System.out.println(" ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
                     drawLines();
                 }
-
             } catch (StringIndexOutOfBoundsException e) {
                 drawLines();
                 System.out.println("The task you input has missing fields!");
                 System.out.println("Please do input 'help' for the commands and their respective input format.");
-                drawLines();
-            } catch (IndexOutOfBoundsException e){
-                drawLines();
-                System.out.println("Sorry the number of allowed task input is 100.");
-                printListIndex(listIndex);
-                System.out.println("Do email me at abc@gmail.com for increment of storage space!");
                 drawLines();
             } catch (Exception e) {
                 drawLines();
@@ -138,10 +131,8 @@ public class Duke {
     }
 
     public static void helloMessage() {
-        drawLines();
-        System.out.println("Hello! I'm duke.Duke");
+        System.out.println("Hello! I'm duke.");
         System.out.println("What can I do for you today?");
-        drawLines();
     }
 
     public static void byeMessage() {
