@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Duke {
-    
+
     private static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
@@ -87,6 +87,14 @@ public class Duke {
                     break;
                 } else if (userInput.toLowerCase().equals("help")) {
                     commandsAvailable();
+                } else if (userInput.toLowerCase().startsWith("delete")) {
+                    int removeIndex = Integer.parseInt(commandGiven[1]);
+                    drawLines();
+                    System.out.println("Noted. I've removed this task:");
+                    System.out.println("\t" + tasks.get(--removeIndex).toString());
+                    tasks.remove(removeIndex);
+                    printListIndex(--listIndex);
+                    drawLines();
                 } else {
                     drawLines();
                     System.out.println(" ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
