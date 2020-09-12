@@ -129,6 +129,7 @@ public class Duke {
         System.out.println("todo x - x is the data to be done");
         System.out.println("deadline x /by y - x is the data and y is the deadline");
         System.out.println("event x /at y - x is the data and y is the event date");
+        System.out.println("delete x - removes the task located at index x of the list");
         System.out.println("bye - this terminates the program");
         drawLines();
     }
