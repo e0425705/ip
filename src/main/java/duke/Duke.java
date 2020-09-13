@@ -59,7 +59,9 @@ public class Duke {
                     drawLines();
                     userInput = userInput.substring(4).trim();
                     System.out.println("Got it. I've added this task:");
-                    listIndex = addToDo(listIndex, userInput);
+                    Task inputDescription = new ToDo(userInput);
+                    tasks.add(inputDescription);
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("deadline")) {
@@ -69,7 +71,9 @@ public class Duke {
                     String dateInput = userInput.substring(byIndex + 3).trim();
                     userInput = userInput.substring(0, byIndex - 1);
                     System.out.println("Got it. I've added this task:");
-                    listIndex = addDeadline(listIndex, userInput, dateInput);
+                    Task inputDescription = new Deadline(userInput, dateInput);
+                    tasks.add(inputDescription);
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("event")) {
@@ -79,7 +83,9 @@ public class Duke {
                     String dateInput = userInput.substring(byIndex + 3).trim();
                     userInput = userInput.substring(0, byIndex - 1);
                     System.out.println("Got it. I've added this task:");
-                    listIndex = addEvent(listIndex, userInput, dateInput);
+                    Task inputDescription = new Event(userInput, dateInput);
+                    tasks.add(inputDescription);
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().equals("bye")) {
@@ -116,27 +122,6 @@ public class Duke {
         }
     }
 
-    private static int addEvent(int listIndex, String userInput, String dateInput) {
-        Task inputDescription = new Event(userInput, dateInput);
-        tasks.add(inputDescription);
-        System.out.println("\t" + tasks.get(listIndex++).toString());
-        return listIndex;
-    }
-
-    private static int addDeadline(int listIndex, String userInput, String dateInput) {
-        Task inputDescription = new Deadline(userInput, dateInput);
-        tasks.add(inputDescription);
-        System.out.println("\t" + tasks.get(listIndex++).toString());
-        return listIndex;
-    }
-
-    private static int addToDo(int listIndex, String userInput) {
-        Task inputDescription = new ToDo(userInput);
-        tasks.add(inputDescription);
-        System.out.println("\t" + tasks.get(listIndex++).toString());
-        return listIndex;
-    }
-
     public static int readFromFile(File file, int listIndex) {
         try {
             if (file.createNewFile()) {
@@ -148,17 +133,32 @@ public class Duke {
                     String[] savedCommand = userInput.split(" ");
                     if (savedCommand[0].equals("T")) {
                         userInput = userInput.substring(4);
-                        listIndex = addToDo(listIndex, userInput);
+                        Task inputDescription = new ToDo(userInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals("1")) {
+                            tasks.get(listIndex).markAsDone();
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
                     } else if (savedCommand[0].equals("E")) {
                         int separationIndexOfEvent = userInput.indexOf('|');
                         String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
                         userInput = userInput.substring(4, separationIndexOfEvent - 1);
-                        listIndex = addEvent(listIndex, userInput, atInput);
+                        Task inputDescription = new Event(userInput, atInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals("1")) {
+                            tasks.get(listIndex).markAsDone();
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
                     } else if (savedCommand[0].equals("D")) {
                         int separationIndexOfDeadline = userInput.indexOf('|');
                         String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
                         userInput = userInput.substring(4, separationIndexOfDeadline - 1);
-                        listIndex = addDeadline(listIndex, userInput, byInput);
+                        Task inputDescription = new Deadline(userInput, byInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals("1")) {
+                            tasks.get(listIndex).markAsDone();
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
                     }
                 }
                 printListIndex(listIndex);

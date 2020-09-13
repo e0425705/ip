@@ -1,5 +1,8 @@
+T 1 sleep in
+E 1 hello |monday
+T 1 eating
 T 0 sleep in
-E 0 hello |monday
-T 0 eating
-T 0 sleep in
-E 0 bday  |monday
+T 0 now
+T 1 sleep
+T 0 sleeping
+D 1 homework |monday
