@@ -5,18 +5,24 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.String;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
-    public static final int MAX_INT = 100;
-    private static Task[] tasks = new Task[MAX_INT];
+
+    public static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
-        // Level 4
         displayDuke();
         helloMessage();
         commandsAvailable();
+
+        File file = new File("duke.txt");
+        readFromFile(file);
 
         Scanner input = new Scanner(System.in);
         int listIndex = 0;
@@ -28,9 +34,10 @@ public class Duke {
             try {
                 if (userInput.toLowerCase().equals("list")) {
                     drawLines();
-                    System.out.println("Here are the tasks in your list:");
+                    System.out.print("Here" + ((listIndex > 1) ? " are" : " is") + " the");
+                    System.out.println(((listIndex > 1) ? " tasks" : " task") + " in the list");
                     for (int j = 0; j < listIndex; j++) {
-                        System.out.println((j + 1) + "." + tasks[j].toString());
+                        System.out.println((j + 1) + "." + tasks.get(j).toString());
                     }
                     drawLines();
                 } else if (userInput.toLowerCase().trim().equals("todo")) {
@@ -43,36 +50,58 @@ public class Duke {
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("done")) {
                     int taskDone = Integer.parseInt(commandGiven[1]);
-                    tasks[taskDone - 1].markAsDone();
+                    tasks.get(taskDone - 1).markAsDone();
                     drawLines();
                     System.out.println("Nice! I've marked this task as done:");
-                    System.out.println(tasks[taskDone - 1].toString());
+                    System.out.println("\t" + tasks.get(taskDone - 1).toString());
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("todo")) {
                     userInput = userInput.substring(4).trim();
-                    tasks[listIndex] = new ToDo(userInput);
+                    Task inputDescription = new ToDo(userInput);
+                    tasks.add(inputDescription);
                     drawLines();
                     System.out.println("Got it. I've added this task:");
-                    System.out.println("\t" + tasks[listIndex++].toString());
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("deadline")) {
-                    listIndex = getListIndexOfDeadline(listIndex, userInput);
+                    userInput = userInput.substring(8).trim();
+                    int byIndex = userInput.indexOf('/');
+                    String dateInput = userInput.substring(byIndex + 3).trim();
+                    userInput = userInput.substring(0, byIndex - 1);
+                    Task inputDescription = new Deadline(userInput, dateInput);
+                    tasks.add(inputDescription);
                     drawLines();
                     System.out.println("Got it. I've added this task:");
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("event")) {
-                    listIndex = getListIndexOfEvent(listIndex, userInput);
+                    userInput = userInput.substring(5).trim();
+                    int byIndex = userInput.indexOf('/');
+                    String dateInput = userInput.substring(byIndex + 3).trim();
+                    userInput = userInput.substring(0, byIndex - 1);
+                    Task inputDescription = new Event(userInput, dateInput);
+                    tasks.add(inputDescription);
                     drawLines();
                     System.out.println("Got it. I've added this task:");
+                    System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
                 } else if (userInput.toLowerCase().equals("bye")) {
                     byeMessage();
+                    writeToFile();
                     break;
                 } else if (userInput.toLowerCase().equals("help")) {
                     commandsAvailable();
+                } else if (userInput.toLowerCase().startsWith("delete")) {
+                    int removeIndex = Integer.parseInt(commandGiven[1]);
+                    drawLines();
+                    System.out.println("Noted. I've removed this task:");
+                    System.out.println("\t" + tasks.get(--removeIndex).toString());
+                    tasks.remove(removeIndex);
+                    printListIndex(--listIndex);
+                    drawLines();
                 } else {
                     drawLines();
                     System.out.println(" ☹ OOPS!!! I'm sorry, but I don't know what that means :-(");
@@ -93,24 +122,44 @@ public class Duke {
         }
     }
 
-    private static int getListIndexOfEvent(int listIndex, String userInput) {
-        userInput = userInput.substring(5).trim();
-        int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + 3).trim();
-        userInput = userInput.substring(0, byIndex - 1);
-        tasks[listIndex] = new Event(userInput, dateInput);
-        System.out.println("\t" + tasks[listIndex++].toString());
-        return listIndex;
+    public static void readFromFile(File file) {
+        try {
+            if (file.createNewFile()) {
+                System.out.println("Created new file " + file.getAbsolutePath());
+            } else if (!file.createNewFile()) {
+                Scanner s = new Scanner(file);
+                while (s.hasNext()) {
+                    String userInput = s.nextLine();
+                    String[] savedCommand = userInput.split(" ");
+                    switch (savedCommand[1]) {
+                    case "|T|":
+                        Task todoItem = new ToDo(savedCommand[2]);
+                        tasks.add(todoItem);
+                    case "|E|":
+                        Task eventItem = new Event(savedCommand[2], savedCommand[3]);
+                        tasks.add(eventItem);
+                    case "|D|":
+                        Task deadlineItem = new Deadline(savedCommand[2], savedCommand[3].substring(1));
+                        tasks.add(deadlineItem);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
-    private static int getListIndexOfDeadline(int listIndex, String userInput) {
-        userInput = userInput.substring(8).trim();
-        int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + 3).trim();
-        userInput = userInput.substring(0, byIndex - 1);
-        tasks[listIndex] = new Deadline(userInput, dateInput);
-        System.out.println("\t" + tasks[listIndex++].toString());
-        return listIndex;
+    public static void writeToFile() {
+        try {
+            FileWriter fw = new FileWriter("duke.txt");
+            for (int i = 0; i < tasks.size(); i++) {
+                fw.write(tasks.get(i).toFileString() + System.lineSeparator());
+            }
+            fw.close();
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e.getMessage());
+        }
     }
 
     private static void printListIndex(int listIndex) {
@@ -127,6 +176,7 @@ public class Duke {
         System.out.println("todo x - x is the data to be done");
         System.out.println("deadline x /by y - x is the data and y is the deadline");
         System.out.println("event x /at y - x is the data and y is the event date");
+        System.out.println("delete x - removes the task located at index x of the list");
         System.out.println("bye - this terminates the program");
         drawLines();
     }
