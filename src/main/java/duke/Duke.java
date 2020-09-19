@@ -91,13 +91,6 @@ public class Duke {
                     System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
-                } else if (userInput.toLowerCase().startsWith("find")) {
-                    userInput = userInput.substring(5);
-                    drawLines();
-                    for(Task t: filterByString(tasks, userInput)) {
-                        System.out.println(t);
-                    }
-                    drawLines();
                 } else if (userInput.toLowerCase().trim().equals("bye")) {
                     writeToFile();
                     byeMessage();
@@ -135,14 +128,6 @@ public class Duke {
                 drawLines();
             }
         }
-    }
-
-    public static ArrayList<Task> filterByString(ArrayList<Task> tasksData, String filterString) {
-        ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasksData.stream()
-                .filter((s) -> s.getDescription().contains(filterString))
-                .collect(toList());
-
-        return filteredTaskList;
     }
 
     public static int readFromFile(File file, int listIndex) {
