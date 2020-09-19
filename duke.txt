@@ -1,8 +1,5 @@
-T 1 sleep in
-E 1 hello |monday
-T 1 eating
-T 0 sleep in
-T 0 now
-T 1 sleep
-T 0 sleeping
-D 1 homework |monday
+D 1 sleeping | now
+E 0 eating | 1630
+T 0 say hi
+D 0 say bye | now
+E 0 do nothing | current
