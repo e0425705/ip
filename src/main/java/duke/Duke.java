@@ -12,6 +12,8 @@ import java.lang.String;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+import static java.util.stream.Collectors.toList;
+
 public class Duke {
 
     public static ArrayList<Task> tasks = new ArrayList<>();
@@ -89,6 +91,13 @@ public class Duke {
                     System.out.println("\t" + tasks.get(listIndex++).toString());
                     printListIndex(listIndex);
                     drawLines();
+                } else if (userInput.toLowerCase().startsWith("find")) {
+                    userInput = userInput.substring(5);
+                    drawLines();
+                    for(Task t: filterByString(tasks, userInput)) {
+                        System.out.println(t);
+                    }
+                    drawLines();
                 } else if (userInput.toLowerCase().trim().equals("bye")) {
                     writeToFile();
                     byeMessage();
@@ -126,6 +135,14 @@ public class Duke {
                 drawLines();
             }
         }
+    }
+
+    public static ArrayList<Task> filterByString(ArrayList<Task> tasksData, String filterString) {
+        ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasksData.stream()
+                .filter((s) -> s.getDescription().contains(filterString))
+                .collect(toList());
+
+        return filteredTaskList;
     }
 
     public static int readFromFile(File file, int listIndex) {
@@ -197,13 +214,13 @@ public class Duke {
         }
     }
 
-    private static void printListIndex(int listIndex) {
+    public static void printListIndex(int listIndex) {
         System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
     }
 
     private static void commandsAvailable() {
         drawLines();
-        System.out.println("Commands available: list, help, done, todo, deadline, event, delete, save, bye");
+        System.out.println("Commands available: list, help, done, todo, deadline, event, delete, find, save, bye");
         System.out.println("The expected format of input values: ");
         System.out.println("list - gives the list of data inputted");
         System.out.println("help - this pulls out the commands available");
@@ -212,6 +229,7 @@ public class Duke {
         System.out.println("deadline x /by y - x is the task description and y is the deadline date");
         System.out.println("event x /at y - x is the task description and y is the event date");
         System.out.println("delete x - removes the task located at index x of the list");
+        System.out.println("find x - looks for task description with x included");
         System.out.println("save - this saves the current list");
         System.out.println("bye - this terminates the program");
         drawLines();
