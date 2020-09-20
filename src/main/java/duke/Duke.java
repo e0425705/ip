@@ -6,22 +6,23 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.lang.String;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import static java.util.stream.Collectors.toList;
+import static duke.ReadFromFile.readFromFile;
+import static duke.WriteToFile.writeToFile;
+
+// import static java.util.stream.Collectors.toList;
 
 public class Duke {
-
+    public static final String DONE = "1";
     public static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         displayDuke();
         helloMessage();
-        commandsAvailable();
+        availableCommands();
 
         int listIndex = 0;
 
@@ -35,21 +36,17 @@ public class Duke {
             String[] commandGiven = userInput.split(" ");
 
             try {
-                if (userInput.toLowerCase().trim().equals("list")) {
+                if (userInput.trim().isEmpty()) {
+                    drawLines();
+                    System.out.println("The description cannot be empty.");
+                    drawLines();
+                } else if (userInput.toLowerCase().trim().equals("list")) {
                     drawLines();
                     System.out.print("Here" + ((listIndex > 1) ? " are" : " is") + " the");
                     System.out.println(((listIndex > 1) ? " tasks" : " task") + " in the list");
                     for (int j = 0; j < listIndex; j++) {
-                        System.out.println((j + 1) + "." + tasks.get(j).toString());
+                        System.out.println("\t" + (j + 1) + "." + tasks.get(j).toString());
                     }
-                    drawLines();
-                } else if (userInput.toLowerCase().trim().equals("todo")) {
-                    drawLines();
-                    System.out.println("The description of a todo cannot be empty.");
-                    drawLines();
-                } else if (userInput.trim().isEmpty()) {
-                    drawLines();
-                    System.out.println("The description cannot be empty.");
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("done")) {
                     int taskDone = Integer.parseInt(commandGiven[1]);
@@ -59,14 +56,16 @@ public class Duke {
                     System.out.println("\t" + tasks.get(taskDone - 1).toString());
                     drawLines();
                 } else if (userInput.toLowerCase().startsWith("todo")) {
+                    if (userInput.toLowerCase().trim().equals("todo")) {
+                        drawLines();
+                        System.out.println("The description of a todo cannot be empty.");
+                        drawLines();
+                        continue;
+                    }
                     userInput = userInput.substring(4).trim();
                     Task inputDescription = new ToDo(userInput);
                     tasks.add(inputDescription);
-                    drawLines();
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("\t" + tasks.get(listIndex++).toString());
-                    printListIndex(listIndex);
-                    drawLines();
+                    listIndex = printOutput(listIndex);
                 } else if (userInput.toLowerCase().startsWith("deadline")) {
                     userInput = userInput.substring(8).trim();
                     int byIndex = userInput.indexOf('/');
@@ -74,11 +73,7 @@ public class Duke {
                     userInput = userInput.substring(0, byIndex - 1);
                     Task inputDescription = new Deadline(userInput, dateInput);
                     tasks.add(inputDescription);
-                    drawLines();
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("\t" + tasks.get(listIndex++).toString());
-                    printListIndex(listIndex);
-                    drawLines();
+                    listIndex = printOutput(listIndex);
                 } else if (userInput.toLowerCase().startsWith("event")) {
                     userInput = userInput.substring(5).trim();
                     int byIndex = userInput.indexOf('/');
@@ -86,11 +81,7 @@ public class Duke {
                     userInput = userInput.substring(0, byIndex - 1);
                     Task inputDescription = new Event(userInput, dateInput);
                     tasks.add(inputDescription);
-                    drawLines();
-                    System.out.println("Got it. I've added this task:");
-                    System.out.println("\t" + tasks.get(listIndex++).toString());
-                    printListIndex(listIndex);
-                    drawLines();
+                    listIndex = printOutput(listIndex);
                 } else if (userInput.toLowerCase().trim().equals("bye")) {
                     writeToFile();
                     byeMessage();
@@ -101,7 +92,7 @@ public class Duke {
                     System.out.println("The current list has been saved.");
                     drawLines();
                 } else if (userInput.toLowerCase().trim().equals("help")) {
-                    commandsAvailable();
+                    availableCommands();
                 } else if (userInput.toLowerCase().startsWith("delete")) {
                     int removeIndex = Integer.parseInt(commandGiven[1]);
                     drawLines();
@@ -130,96 +121,53 @@ public class Duke {
         }
     }
 
-    public static int readFromFile(File file, int listIndex) {
-        try {
-            if (file.createNewFile()) {
-                System.out.println("Created new file " + file.getAbsolutePath());
-                drawLines();
-            } else if (!file.createNewFile()) {
-                Scanner s = new Scanner(file);
-                while (s.hasNext()) {
-                    String userInput = s.nextLine();
-                    String[] savedCommand = userInput.split(" ");
-                    switch (savedCommand[0]) {
-                    case "T": {
-                        userInput = userInput.substring(4);
-                        Task inputDescription = new ToDo(userInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals("1")) {
-                            tasks.get(listIndex).markAsDone();
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    case "E": {
-                        int separationIndexOfEvent = userInput.indexOf('|');
-                        String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
-                        userInput = userInput.substring(4, separationIndexOfEvent - 1);
-                        Task inputDescription = new Event(userInput, atInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals("1")) {
-                            tasks.get(listIndex).markAsDone();
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    case "D": {
-                        int separationIndexOfDeadline = userInput.indexOf('|');
-                        String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
-                        userInput = userInput.substring(4, separationIndexOfDeadline - 1);
-                        Task inputDescription = new Deadline(userInput, byInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals("1")) {
-                            tasks.get(listIndex).markAsDone();
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    }
-                }
-                printListIndex(listIndex);
-                drawLines();
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
+    /** Prints out acknowledgement of adding task to list */
+    private static int printOutput(int listIndex) {
+        drawLines();
+        System.out.println("Got it. I've added this task:");
+        System.out.println("\t" + tasks.get(listIndex++).toString());
+        printListIndex(listIndex);
+        drawLines();
         return listIndex;
     }
 
-    public static void writeToFile() {
-        try {
-            FileWriter fw = new FileWriter("duke.txt");
-            for (Task task : tasks) {
-                fw.write(task.toFileString() + System.lineSeparator());
-            }
-            fw.close();
-        } catch (Exception e) {
-            System.out.println("Something went wrong: " + e.getMessage());
-        }
+    /** Trims the input of leading and trailing spaces */
+    public static String trimInput(String input) {
+        input = input.trim();
+        return input;
     }
 
+    /** Trims the input of leading and trailing spaces */
+    public static String convertInputToLowerCase(String input) {
+        input = input.toLowerCase();
+        return input;
+    }
+
+    /** Prints out the current number of tasks in list */
     public static void printListIndex(int listIndex) {
         System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
     }
 
-    private static void commandsAvailable() {
+    /** Prints out the commands available */
+    private static void availableCommands() {
         drawLines();
-        System.out.println("Commands available: list, help, done, todo, deadline, event, delete, find, save, bye");
-        System.out.println("The expected format of input values: ");
-        System.out.println("list - gives the list of data inputted");
-        System.out.println("help - this pulls out the commands available");
-        System.out.println("done x - x is the index of data that you want to mark as done");
-        System.out.println("todo x - x is the task description");
-        System.out.println("deadline x /by y - x is the task description and y is the deadline date");
-        System.out.println("event x /at y - x is the task description and y is the event date");
-        System.out.println("delete x - removes the task located at index x of the list");
-        System.out.println("find x - looks for task description with x included");
-        System.out.println("save - this saves the current list");
-        System.out.println("bye - this terminates the program");
+        String help = "Commands available: list, help, done, todo, deadline, event, delete, find, save, bye\n"
+                + "The expected format of input values: \n"
+                + "\tlist - gives the list of data inputted\n"
+                + "\thelp - this pulls out the commands available\n"
+                + "\tdone x - x is the index of data that you want to mark as done\n"
+                + "\ttodo x - x is the task description\n"
+                + "\tdeadline x /by y - x is the task description and y is the deadline date\n"
+                + "\tevent x /at y - x is the task description and y is the event date\n"
+                + "\tdelete x - removes the task located at index x of the list\n"
+                + "\tfind x - looks for task description with x included\n"
+                + "\tsave - this saves the current list\n"
+                + "\tbye - this terminates the program";
+        System.out.println(help);
         drawLines();
     }
 
+    /** Prints out the Duke logo */
     public static void displayDuke() {
         drawLines();
         String logo = " ____        _        \n"
@@ -231,20 +179,25 @@ public class Duke {
         drawLines();
     }
 
+    /** Prints out a line divider */
     public static void drawLines() {
         System.out.println("--------------------------------------------------------------------------------------------");
     }
 
+    /** Prints out the hello message */
     public static void helloMessage() {
-        System.out.println("Hello! I'm duke.");
-        System.out.println("What can I do for you today?");
+        String hello = "Hello! I'm duke.\n"
+                + "What can I do for you today?";
+        System.out.println(hello);
     }
 
+    /** Prints out the bye message */
     public static void byeMessage() {
         drawLines();
-        System.out.println("Bye. It was a pleasure serving you.");
-        System.out.println("The current list has been saved.");
-        System.out.println("Hope to see you again soon!");
+        String bye = "Bye. It was a pleasure serving you.\n"
+                + "The current list has been saved.\n"
+                + "Hope to see you again soon!";
+        System.out.println(bye);
         drawLines();
     }
 }
