@@ -1,17 +1,20 @@
 package tasklist;
 
+import java.util.ArrayList;
+
 import duke.Duke;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
+import static java.util.stream.Collectors.toList;
 import static ui.Ui.drawLines;
 import static ui.Ui.printListIndex;
 import static ui.Ui.printOutput;
 
 /**
- * contains the task list e.g., it has operations to add/delete tasks in the list
+ * contains the task list e.g., it has operations to add/delete/find tasks in the list
  */
 public class TaskList extends Duke {
     /**
@@ -69,5 +72,14 @@ public class TaskList extends Duke {
         drawLines();
 
         return listIndex;
+    }
+
+    /** */
+    public static ArrayList<Task> findKeyword(ArrayList<Task> tasksData, String filterString) {
+        ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasksData.stream()
+                .filter((s) -> s.getDescription().contains(filterString))
+                .collect(toList());
+
+        return filteredTaskList;
     }
 }

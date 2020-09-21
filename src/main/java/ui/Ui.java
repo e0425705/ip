@@ -1,6 +1,7 @@
 package ui;
 
 import duke.Duke;
+import duke.task.Task;
 
 import java.io.IOException;
 
@@ -9,6 +10,7 @@ import static tasklist.TaskList.addEvent;
 import static tasklist.TaskList.addToDo;
 import static tasklist.TaskList.deleteTask;
 import static storage.Storage.saveFile;
+import static tasklist.TaskList.findKeyword;
 
 /**
  * deals with interactions with the user
@@ -28,7 +30,7 @@ public class Ui extends Duke {
                 + "\tdeadline x /by y - x is the task description and y is the deadline date\n"
                 + "\tevent x /at y - x is the task description and y is the event date\n"
                 + "\tdelete x - removes the task located at index x of the list\n"
-                + "\tfind x - looks for task description with x included\n"
+                + "\tfind y - looks for task description with y included\n"
                 + "\tsave - this saves the current list\n"
                 + "\tbye - this terminates the program";
         System.out.println(help);
@@ -184,6 +186,28 @@ public class Ui extends Duke {
         saveFile();
         drawLines();
         System.out.println("The current list has been saved.");
+        drawLines();
+    }
+
+    /**
+     *
+     */
+    public static void displayFind(String keyword, int listIndex) {
+        keyword = keyword.substring(4).trim();
+        drawLines();
+        int[] indexOfKeyword = new int[20];
+        int indexToSaveKeyword = 0;
+        int indexToAccess = 0;
+        System.out.println("Here are the matching tasks in your list:");
+        for (Task t : findKeyword(tasks, keyword)) {
+            for (int i = 0; i < listIndex; i++) {
+                if (tasks.get(i).equals(t)) {
+                    indexOfKeyword[indexToSaveKeyword++] = ++i;
+                }
+            }
+            System.out.println("\t" + indexOfKeyword[indexToAccess++] + "." + t);
+        }
+
         drawLines();
     }
 
