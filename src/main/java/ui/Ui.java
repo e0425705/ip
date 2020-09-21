@@ -27,8 +27,10 @@ public class Ui extends Duke {
                 + "\thelp - this pulls out the commands available\n"
                 + "\tdone x - x is the index of data that you want to mark as done\n"
                 + "\ttodo x - x is the task description\n"
-                + "\tdeadline x /by y - x is the task description and y is the deadline date\n"
-                + "\tevent x /at y - x is the task description and y is the event date\n"
+                + "\tdeadline x /by DATETIME - x is the task description and y is the deadline date and time\n"
+                + "\tevent x /at DATETIME - x is the task description and y is the event date and time\n"
+                + "\t\tthe format for DATETIME is YYYY-MM-DDtHHmm, where\n"
+                + "\t\tY = year, M = month, D = day, H = hour, m = minute\n"
                 + "\tdelete x - removes the task located at index x of the list\n"
                 + "\tfind y - looks for task description with y included\n"
                 + "\tsave - this saves the current list\n"
@@ -82,7 +84,8 @@ public class Ui extends Duke {
      * Prints out the hello message
      */
     public static void helloMessage() {
-        String hello = "Hello! I'm duke.\n" + "What can I do for you today?";
+        String hello = "Hello! I'm duke.\n"
+                + "What can I do for you today?";
         System.out.println(hello);
     }
 
@@ -91,7 +94,9 @@ public class Ui extends Duke {
      */
     public static void byeMessage() {
         drawLines();
-        String bye = "Bye. It was a pleasure serving you.\n" + "The current list has been saved.\n" + "Hope to see you again soon!";
+        String bye = "Bye. It was a pleasure serving you.\n"
+                + "The current list has been saved.\n"
+                + "Hope to see you again soon!";
         System.out.println(bye);
         drawLines();
     }
@@ -157,8 +162,11 @@ public class Ui extends Duke {
      *
      */
     public static int displayDeadline(String userInput, int listIndex) {
-        listIndex = addDeadline(userInput, listIndex);
-
+        if (addDeadline(userInput, listIndex) == -1) {
+            drawLines();
+            System.out.println("The allowed input for date and time is YYYY-MM-DDtHH:MM");
+            drawLines();
+        }
         return listIndex;
     }
 
@@ -166,7 +174,12 @@ public class Ui extends Duke {
      *
      */
     public static int displayEvent(String userInput, int listIndex) {
-        listIndex = addEvent(userInput, listIndex);
+        if (addEvent(userInput, listIndex) == -1) {
+            drawLines();
+            System.out.println("error in date-time input!");
+            System.out.println("The allowed input for date and time is YYYY-MM-DDtHHmm");
+            drawLines();
+        }
 
         return listIndex;
     }
@@ -242,7 +255,9 @@ public class Ui extends Duke {
      */
     public static void displayExceptionMessage() {
         drawLines();
-        String exception = "Something went wrong!! I do not understand what you mean.\n" + "There could be an error in the way of input.\n" + "Please do input 'help' for the commands and their respective input format.";
+        String exception = "Something went wrong!! I do not understand what you mean.\n"
+                + "There could be an error in the way of input.\n"
+                + "Please do input 'help' for the commands and their respective input format.";
         System.out.println(exception);
         drawLines();
     }
