@@ -1,10 +1,5 @@
-E 0 do nothing | current
-D 1 return book | June 6th
-E 1 sleat | monday
-E 1 dinner | 9pm
-D 0 lunch | 6pm
-T 0 eating
-E 1 up | monday
-T 0 sleep in
-T 0 read book
-D 1 return book | June 6th
+T 0 eat
+T 0 sleep
+E 0 sleep | 21 SEPTEMBER 2020, 1600
+D 0 sleep | 18 SEPTEMBER 1990, 1678
+E 0 now | 8 SEPTEMBER 2020, 1500
