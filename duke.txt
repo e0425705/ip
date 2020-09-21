@@ -1,6 +1,8 @@
-D 0 say bye | now
 E 0 do nothing | current
 D 1 return book | June 6th
-T 0 sleeping
-E 0 sleat | monday
-D 0 eating | tuesday
+E 1 sleat | monday
+E 1 dinner | 9pm
+D 0 lunch | 6pm
+T 0 eating
+E 1 up | monday
+T 0 sleep in

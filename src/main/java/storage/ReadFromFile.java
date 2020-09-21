@@ -1,5 +1,6 @@
-package duke;
+package storage;
 
+import duke.Duke;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
@@ -9,7 +10,17 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ReadFromFile extends Duke{
+import static ui.Ui.displayIOExceptionMessage;
+import static ui.Ui.drawLines;
+import static ui.Ui.printListIndex;
+
+/**
+ * deals with loading tasks from the file
+ */
+public class ReadFromFile extends Duke {
+    /**
+     *
+     */
     public static int readFromFile(File file, int listIndex) {
         try {
             if (file.createNewFile()) {
@@ -56,7 +67,8 @@ public class ReadFromFile extends Duke{
                         break;
                     }
                     default:
-                        System.out.println("An error has occurred!" + "Do check file source is there is a corruption of data!");
+                        System.out.println("An error has occurred!"
+                                + "Do check file source is there is a corruption of data!");
                         break;
                     }
                 }
@@ -64,8 +76,7 @@ public class ReadFromFile extends Duke{
                 drawLines();
             }
         } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
+            displayIOExceptionMessage(e);
         }
         return listIndex;
     }

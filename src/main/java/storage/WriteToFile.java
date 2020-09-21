@@ -1,10 +1,19 @@
-package duke;
+package storage;
 
+import duke.Duke;
 import duke.task.Task;
 
 import java.io.FileWriter;
 
+import static ui.Ui.displayWriteToFileException;
+
+/**
+ * deals with saving tasks in the file
+ */
 public class WriteToFile extends Duke {
+    /**
+     *
+     */
     public static void writeToFile() {
         try {
             FileWriter fw = new FileWriter("duke.txt");
@@ -13,7 +22,7 @@ public class WriteToFile extends Duke {
             }
             fw.close();
         } catch (Exception e) {
-            System.out.println("Something went wrong: " + e.getMessage());
+            displayWriteToFileException(e);
         }
     }
 }

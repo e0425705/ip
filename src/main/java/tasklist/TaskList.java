@@ -1,14 +1,22 @@
-package duke;
+package tasklist;
 
+import duke.Duke;
 import duke.task.Deadline;
 import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
-public class TaskList extends Duke {
-    // contains the task list e.g., it has operations to add/delete tasks in the list
+import static ui.Ui.drawLines;
+import static ui.Ui.printListIndex;
+import static ui.Ui.printOutput;
 
-    /** */
+/**
+ * contains the task list e.g., it has operations to add/delete tasks in the list
+ */
+public class TaskList extends Duke {
+    /**
+     *
+     */
     public static int addToDo(String userInput, int listIndex) {
         userInput = userInput.substring(4).trim();
         Task inputDescription = new ToDo(userInput);
@@ -18,7 +26,9 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     *
+     */
     public static int addEvent(String userInput, int listIndex) {
         userInput = userInput.substring(5).trim();
         int byIndex = userInput.indexOf('/');
@@ -31,7 +41,9 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     *
+     */
     public static int addDeadline(String userInput, int listIndex) {
         userInput = userInput.substring(8).trim();
         int byIndex = userInput.indexOf('/');
@@ -44,7 +56,9 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     *
+     */
     public static int deleteTask(int listIndex, String index) {
         int removeIndex = Integer.parseInt(index);
         drawLines();
