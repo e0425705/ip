@@ -36,56 +36,105 @@ public class ReadFromFile extends Duke {
                 while (scanner.hasNext()) {
                     String userInput = scanner.nextLine();
                     String[] savedCommand = userInput.split(" ");
-                    switch (savedCommand[0]) {
-                    case "T": {
-                        userInput = userInput.substring(4);
-                        Task inputDescription = new ToDo(userInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals(DONE)) {
-                            tasks.get(listIndex).markAsDone();
-                        } else if (!savedCommand[1].equals("0")) {
-                            displayReadFromError();
-                            continue;
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    case "E": {
-                        int separationIndexOfEvent = userInput.indexOf('|');
-                        String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
-                        userInput = userInput.substring(4, separationIndexOfEvent - 1);
-                        Task inputDescription = new Event(userInput, atInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals(DONE)) {
-                            tasks.get(listIndex).markAsDone();
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    case "D": {
-                        int separationIndexOfDeadline = userInput.indexOf('|');
-                        String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
-                        userInput = userInput.substring(4, separationIndexOfDeadline - 1);
-                        Task inputDescription = new Deadline(userInput, byInput);
-                        tasks.add(inputDescription);
-                        if (savedCommand[1].equals(DONE)) {
-                            tasks.get(listIndex).markAsDone();
-                        }
-                        System.out.println("\t" + tasks.get(listIndex++).toString());
-                        break;
-                    }
-                    default:
-                        displayReadFromError();
-                        break;
-                    }
+                    listIndex = readTaskTypeFromFile(listIndex, userInput, savedCommand);
                 }
                 printListIndex(listIndex);
                 drawLines();
             }
         } catch (IOException e) {
             displayIOExceptionMessage(e);
+        } catch (StringIndexOutOfBoundsException e) {
+            displayReadFromError();
         }
-
         return listIndex;
     }
+
+    /**
+     *
+     * @param listIndex current index in list
+     * @param userInput line of data without filtering from file
+     * @param savedCommand userInput parse into array
+     * @return updated listIndex
+     */
+    private static int readTaskTypeFromFile(int listIndex, String userInput, String[] savedCommand) {
+        switch (savedCommand[0]) {
+        case "T": {
+            listIndex = readToDoFromFile(listIndex, userInput, savedCommand);
+            break;
+        }
+        case "E": {
+            listIndex = readEventFromFile(listIndex, userInput, savedCommand);
+            break;
+        }
+        case "D": {
+            listIndex = readDeadlineFromFile(listIndex, userInput, savedCommand);
+            break;
+        }
+        default:
+            displayReadFromError();
+            break;
+        }
+        return listIndex;
+    }
+
+    /**
+     *
+     * @param listIndex current index in list
+     * @param userInput line of data without filtering from file
+     * @param savedCommand userInput parse into array
+     * @return updated listIndex
+     */
+    private static int readDeadlineFromFile(int listIndex, String userInput, String[] savedCommand) {
+        int separationIndexOfDeadline = userInput.indexOf('|');
+        String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
+        userInput = userInput.substring(4, separationIndexOfDeadline - 1);
+        Task inputDescription = new Deadline(userInput, byInput);
+        tasks.add(inputDescription);
+        if (savedCommand[1].equals(DONE)) {
+            tasks.get(listIndex).markAsDone();
+        }
+        System.out.println("\t" + tasks.get(listIndex++).toString());
+        return listIndex;
+    }
+
+    /**
+     *
+     * @param listIndex current index in list
+     * @param userInput line of data without filtering from file
+     * @param savedCommand userInput parse into array
+     * @return updated listIndex
+     */
+    private static int readEventFromFile(int listIndex, String userInput, String[] savedCommand) {
+        int separationIndexOfEvent = userInput.indexOf('|');
+        String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
+        userInput = userInput.substring(4, separationIndexOfEvent - 1);
+        Task inputDescription = new Event(userInput, atInput);
+        tasks.add(inputDescription);
+        if (savedCommand[1].equals(DONE)) {
+            tasks.get(listIndex).markAsDone();
+        }
+        System.out.println("\t" + tasks.get(listIndex++).toString());
+        return listIndex;
+    }
+
+    /**
+     *
+     * @param listIndex current index in list
+     * @param userInput line of data without filtering from file
+     * @param savedCommand userInput parse into array
+     * @return updated listIndex
+     */
+    private static int readToDoFromFile(int listIndex, String userInput, String[] savedCommand) {
+        userInput = userInput.substring(4);
+        Task inputDescription = new ToDo(userInput);
+        tasks.add(inputDescription);
+        if (savedCommand[1].equals(DONE)) {
+            tasks.get(listIndex).markAsDone();
+        } else if (!savedCommand[1].equals("0")) {
+            displayReadFromError();
+        }
+        System.out.println("\t" + tasks.get(listIndex++).toString());
+        return listIndex;
+    }
+
 }
