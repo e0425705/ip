@@ -50,6 +50,7 @@ public class ReadFromFile extends Duke {
     }
 
     /**
+     * Determines the Task type.
      *
      * @param listIndex current index in list
      * @param userInput line of data without filtering from file
@@ -78,6 +79,7 @@ public class ReadFromFile extends Duke {
     }
 
     /**
+     * Reads the individual attributes of {@code Task} Deadline.
      *
      * @param listIndex current index in list
      * @param userInput line of data without filtering from file
@@ -98,6 +100,7 @@ public class ReadFromFile extends Duke {
     }
 
     /**
+     * Reads the individual attributes of {@code Task} Deadline.
      *
      * @param listIndex current index in list
      * @param userInput line of data without filtering from file
@@ -118,6 +121,7 @@ public class ReadFromFile extends Duke {
     }
 
     /**
+     * Reads the individual attributes of {@code Task} Deadline.
      *
      * @param listIndex current index in list
      * @param userInput line of data without filtering from file

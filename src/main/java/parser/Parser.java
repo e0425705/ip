@@ -72,10 +72,7 @@ public class Parser extends Duke {
         return listIndex;
     }
 
-    /**
-     * Parses givenCommand to lower case.
-     */
-    public static String parseToLowerCase(String givenCommand) {
+    private static String parseToLowerCase(String givenCommand) {
         givenCommand = givenCommand.toLowerCase();
 
         return givenCommand;
