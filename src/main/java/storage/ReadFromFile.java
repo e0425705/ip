@@ -11,15 +11,20 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import static ui.Ui.displayIOExceptionMessage;
+import static ui.Ui.displayReadFromError;
 import static ui.Ui.drawLines;
 import static ui.Ui.printListIndex;
 
 /**
- * deals with loading tasks from the file
+ * Decodes the storage data file into {@code Task} objects.
  */
 public class ReadFromFile extends Duke {
     /**
+     * Creates a storage file "duke.txt" if file does not exist.
      *
+     * Decodes data from storage into {@code Task} containing the decoded tasks.
+     *
+     * @throws IOException if an error occurs when reading from storage
      */
     public static int readFromFile(File file, int listIndex) {
         try {
@@ -38,6 +43,9 @@ public class ReadFromFile extends Duke {
                         tasks.add(inputDescription);
                         if (savedCommand[1].equals(DONE)) {
                             tasks.get(listIndex).markAsDone();
+                        } else if (!savedCommand[1].equals("0")) {
+                            displayReadFromError();
+                            continue;
                         }
                         System.out.println("\t" + tasks.get(listIndex++).toString());
                         break;
@@ -67,8 +75,7 @@ public class ReadFromFile extends Duke {
                         break;
                     }
                     default:
-                        System.out.println("An error has occurred!"
-                                + "Do check file source is there is a corruption of data!");
+                        displayReadFromError();
                         break;
                     }
                 }
@@ -78,6 +85,7 @@ public class ReadFromFile extends Duke {
         } catch (IOException e) {
             displayIOExceptionMessage(e);
         }
+
         return listIndex;
     }
 }

@@ -1,5 +1,8 @@
 package duke.task;
 
+/**
+ *
+ */
 public class Task {
     protected String description;
     protected boolean isDone;
@@ -10,7 +13,7 @@ public class Task {
     }
 
     /**
-     *
+     * Returns the description of the task
      */
     public String getDescription() {
         return description;

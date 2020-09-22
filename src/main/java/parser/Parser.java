@@ -22,11 +22,13 @@ import static ui.Ui.displayToDo;
 import static ui.Ui.drawLines;
 
 /**
- * deals with making sense of the user command
+ * Deals with making sense of the user command.
  */
 public class Parser extends Duke {
     /**
+     * Parses user input into command for execution.
      *
+     * @param input full user input string
      */
     public static int decideAction(Scanner input, int listIndex) {
         while (true) {
@@ -70,6 +72,9 @@ public class Parser extends Duke {
         return listIndex;
     }
 
+    /**
+     * Parses givenCommand to lower case.
+     */
     public static String parseToLowerCase(String givenCommand) {
         givenCommand = givenCommand.toLowerCase();
 

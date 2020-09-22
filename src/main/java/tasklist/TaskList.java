@@ -16,12 +16,14 @@ import static ui.Ui.printListIndex;
 import static ui.Ui.printOutput;
 
 /**
- * contains the task list e.g., it has operations to add/delete/find tasks in the list
- * and processes the date and time input by user
+ * Contains the task list.
+ *
+ * It has operations to add/delete/find tasks in the list
+ * and to process the date and time input by user.
  */
 public class TaskList extends Duke {
     /**
-     *
+     * Adds a ToDO type task to the list.
      */
     public static int addToDo(String userInput, int listIndex) {
         userInput = userInput.substring(4).trim();
@@ -33,7 +35,7 @@ public class TaskList extends Duke {
     }
 
     /**
-     *
+     * Adds an Event type task to the list.
      */
     public static int addEvent(String userInput, int listIndex) {
         userInput = userInput.substring(5).trim();
@@ -54,7 +56,7 @@ public class TaskList extends Duke {
     }
 
     /**
-     *
+     * Adds an Deadline type task to the list.
      */
     public static int addDeadline(String userInput, int listIndex) {
         userInput = userInput.substring(8).trim();
@@ -74,7 +76,12 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     * Processes the date and time input by user.
+     *
+     * @param dateTimeInput date and time input by user
+     * @return "error" if an error occurs
+     */
     public static String processDateTime(String dateTimeInput) {
         int indexOfT = dateTimeInput.indexOf('t');
         if (indexOfT == -1) {
@@ -83,12 +90,12 @@ public class TaskList extends Duke {
         String dateInput = dateTimeInput.substring(0, indexOfT);
         String timeInput = dateTimeInput.substring(indexOfT + 1);
         int time = Integer.parseInt(timeInput);
-        try{
+        try {
             LocalDate data = LocalDate.parse(dateInput);
             String day = data.getDayOfMonth() + " ";
             String month = data.getMonth() + " ";
             String year = data.getYear() + ", ";
-            if(time < 0000 || time > 2400) {
+            if (time < 0000 || time > 2400) {
                 return "error";
             }
             String output = day + month + year + timeInput;
@@ -100,10 +107,12 @@ public class TaskList extends Duke {
     }
 
     /**
+     * Deletes the task at index deleteListIndex of list
      *
+     * @param deleteListIndex index in the list to be deleted
      */
-    public static int deleteTask(int listIndex, String index) {
-        int removeIndex = Integer.parseInt(index);
+    public static int deleteTask(int listIndex, String deleteListIndex) {
+        int removeIndex = Integer.parseInt(deleteListIndex);
         drawLines();
         System.out.println("Noted. I've removed this task:");
         System.out.println("\t" + tasks.get(--removeIndex).toString());
@@ -114,7 +123,11 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     * Finds for tasks with description matching to filterString
+     *
+     * @param filterString keyword user wants to find in list of tasks
+     */
     public static ArrayList<Task> findKeyword(ArrayList<Task> tasksData, String filterString) {
         ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasksData.stream()
                 .filter((s) -> s.getDescription().contains(filterString))
