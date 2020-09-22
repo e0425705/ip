@@ -3,6 +3,12 @@ package duke.task;
 public class Deadline extends Task {
     protected String by;
 
+    /**
+     * Subclass of class Task.
+     *
+     * @param description task description input by user
+     * @param by date and time of task input by user
+     */
     public Deadline(String description, String by) {
         super(description);
         this.by = by;
