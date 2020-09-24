@@ -16,7 +16,6 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    3.2. Select the project directory, and click `OK`
    3.3. If there are any further prompts, accept the defaults.
 4. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
-
    --------------------------------------------------------------------------------------------
    Hello from
     ____        _        
@@ -37,14 +36,69 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    	todo x - x is the task description
    	deadline x /by DATETIME - x is the task description and y is the deadline date and time
    	event x /at DATETIME - x is the task description and y is the event date and time
-   		the format for DATETIME is YYYY-MM-DDtHHmm, where
+   		Format for DATETIME is YYYY-MM-DDtHHmm, where
    		Y = year, M = month, D = day, H = hour, m = minute
    	delete x - removes the task located at index x of the list
    	find y - looks for task description with y included
    	save - this saves the current list
    	bye - this terminates the program
    --------------------------------------------------------------------------------------------
-   Now you have 0 task in the list
+   Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    --------------------------------------------------------------------------------------------
-   
-5. 
+   4.1 This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt. This file will only be created once. After that, a list of the task that you have saved in duke.txt would be shown. It will look something like this:
+   --------------------------------------------------------------------------------------------
+   	[T][✘] example1
+   	[E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
+   	[D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
+   Now you have 3 tasks in the list
+   --------------------------------------------------------------------------------------------
+   4.3 The "Commands available" gives help list to first time users. If you forget what are the commands available and their format, it can be pulled out once again with the command "help".
+5. There are only 3 types of tasks input available to users. ToDo, Event and Deadline. More task types will be released in version 2.
+6. This section will run through how to input commands and the format acceptable.
+   6.1 By inputting "list", it puts out the list of tasks input by user. It looks something like this:
+   --------------------------------------------------------------------------------------------
+   Here are the tasks in the list
+   	1.[T][✘] example1
+   	2.[E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
+   	3.[D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
+   --------------------------------------------------------------------------------------------
+   6.2 By inputting "help", this prints the commands available. It looks something like this:
+   --------------------------------------------------------------------------------------------
+   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
+   The expected format of input values: 
+   	list - gives the list of data inputted
+   	help - this pulls out the commands available
+   	done x - x is the index of data that you want to mark as done
+   	todo x - x is the task description
+   	deadline x /by DATETIME - x is the task description and y is the deadline date and time
+   	event x /at DATETIME - x is the task description and y is the event date and time
+   		Format for DATETIME is YYYY-MM-DDtHHmm, where
+   		Y = year, M = month, D = day, H = hour, m = minute
+   	delete x - removes the task located at index x of the list
+   	find y - looks for task description with y included
+   	save - this saves the current list
+   	bye - this terminates the program
+   --------------------------------------------------------------------------------------------
+   This help list is the same as the one printed out when you first run the program.
+   6.3 By inputting "done x", this marks the task at x in the list as done. An example is:
+   --------------------------------------------------------------------------------------------
+   Nice! I've marked this task as done:
+   	[T][✓] example1
+   --------------------------------------------------------------------------------------------
+   In this case, I have inputted done 1. The task at list index 1, example1 is marked as done as indicated by the tick(✓).
+   6.4 By inputting "todo x", 
+   6.5 By inputting "deadline x by y"
+   6.6 By inputting "event x by y"
+   6.7 By inputting "delete x"
+   6.8 By inputting "find x", this 
+   6.9 By inputting "save", this saves the current list into file duke.txt. If the file has been successfully saved, the following would be printed out:
+   --------------------------------------------------------------------------------------------
+   The current list has been saved.
+   --------------------------------------------------------------------------------------------
+   6.10 By inputting "bye", this saves the current list into file duke.txt and exits the program. If the file has been successfully saved and exited, the following would be printed out:
+   --------------------------------------------------------------------------------------------
+   Bye. It was a pleasure serving you.
+   The current list has been saved.
+   Hope to see you again soon!
+   --------------------------------------------------------------------------------------------
+   6.11 Note that the list is not auto-saved to file duke.txt unless command "save" or "bye" is given.

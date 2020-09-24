@@ -1,0 +1,12 @@
+T 0 eat
+D 0 sleep | 30 DECEMBER 2020, 1800
+E 0 study | 7 JUNE 2020, 2100
+E 0 sleep in | 12 SEPTEMBER 2019, 1800
+E 0 eating | 17 AUGUST 2019, 1500
+D 0 eat | 18 SEPTEMBER 2019, 1500
+T 0 now
+E 0 sleeing | 8 SEPTEMBER 2019, 1600
+E 0 sleeing | 8 SEPTEMBER 2019, 1600
+T 0 read
+D 0 sleep | 18 SEPTEMBER 2020, 1678
+E 0 sleep | 7 AUGUST 2019, 1500
