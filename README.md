@@ -85,11 +85,31 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    Nice! I've marked this task as done:
    	[T][✓] example1
    --------------------------------------------------------------------------------------------
-   In this case, I have inputted done 1. The task at list index 1, example1 is marked as done as indicated by the tick(✓).
+   In this case, I have inputted "done 1". The task at list index 1, example1 is marked as done as indicated by the tick(✓).
    6.4 By inputting "todo x", 
+   --------------------------------------------------------------------------------------------
+   Got it. I've added this task:
+   	[T][✘] something
+   Now you have 4 tasks in the list
+   --------------------------------------------------------------------------------------------
    6.5 By inputting "deadline x by y"
+   --------------------------------------------------------------------------------------------
+   Got it. I've added this task:
+   	[D][✘] this thing (by: 8 SEPTEMBER 2019, 1700)
+   Now you have 5 tasks in the list
+   --------------------------------------------------------------------------------------------
    6.6 By inputting "event x by y"
+   --------------------------------------------------------------------------------------------
+   Got it. I've added this task:
+   	[E][✘] that thing (at: 18 SEPTEMBER 2016, 1500)
+   Now you have 6 tasks in the list
+   --------------------------------------------------------------------------------------------
    6.7 By inputting "delete x"
+   --------------------------------------------------------------------------------------------
+   Noted. I've removed this task:
+   	[T][✘] something
+   --------------------------------------------------------------------------------------------
+   Now you have 5 tasks in the list
    6.8 By inputting "find x", this 
    6.9 By inputting "save", this saves the current list into file duke.txt. If the file has been successfully saved, the following would be printed out:
    --------------------------------------------------------------------------------------------

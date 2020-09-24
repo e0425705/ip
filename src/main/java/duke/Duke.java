@@ -19,7 +19,6 @@ import static parser.Parser.decideAction;
  * Initializes the application and starts the interaction with the user.
  */
 public class Duke {
-    public static final String DONE = "1";
     public static ArrayList<Task> tasks = new ArrayList<>();
 
     /**

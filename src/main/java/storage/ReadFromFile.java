@@ -19,6 +19,8 @@ import static ui.Ui.printListIndex;
  * Decodes the storage data file into {@code Task} objects.
  */
 public class ReadFromFile extends Duke {
+    public static final String DONE = "1";
+    public static final String UNDONE = "0";
     /**
      * Creates a storage file "duke.txt" if file does not exist.
      * Decodes data from storage into {@code Task}.
@@ -36,7 +38,56 @@ public class ReadFromFile extends Duke {
                 while (scanner.hasNext()) {
                     String userInput = scanner.nextLine();
                     String[] savedCommand = userInput.split(" ");
-                    listIndex = readTaskTypeFromFile(listIndex, userInput, savedCommand);
+                    switch (savedCommand[0]) {
+                    case "T": {
+                        userInput = userInput.substring(4);
+                        Task inputDescription = new ToDo(userInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals(DONE)) {
+                            tasks.get(listIndex).markAsDone();
+                        } else if (!savedCommand[1].equals(UNDONE)) {
+                            displayReadFromError();
+                            continue;
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
+                        break;
+                    }
+                    case "E": {
+                        int separationIndexOfEvent = userInput.indexOf('|');
+                        String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
+                        userInput = userInput.substring(4, separationIndexOfEvent - 1);
+                        Task inputDescription = new Event(userInput, atInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals(DONE)) {
+                            tasks.get(listIndex).markAsDone();
+                        } else if (!savedCommand[1].equals(UNDONE)) {
+                            displayReadFromError();
+                            continue;
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
+                        break;
+                    }
+                    case "D": {
+                        int separationIndexOfDeadline = userInput.indexOf('|');
+                        String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
+                        userInput = userInput.substring(4, separationIndexOfDeadline - 1);
+                        Task inputDescription = new Deadline(userInput, byInput);
+                        tasks.add(inputDescription);
+                        if (savedCommand[1].equals(DONE)) {
+                            tasks.get(listIndex).markAsDone();
+                        } else if (!savedCommand[1].equals(UNDONE)) {
+                            displayReadFromError();
+                            continue;
+                        }
+                        System.out.println("\t" + tasks.get(listIndex++).toString());
+                        break;
+                    }
+                    default:
+                        System.out.println("An error has occurred!"
+                                + "Do check file source is there is a corruption of data!");
+                        displayReadFromError();
+                        break;
+                    }
                 }
                 printListIndex(listIndex);
                 drawLines();
@@ -57,11 +108,11 @@ public class ReadFromFile extends Duke {
      * @param savedCommand UserInput parse into array.
      * @return Updated listIndex.
      */
+    /*
     private static int readTaskTypeFromFile(int listIndex, String userInput, String[] savedCommand) {
         switch (savedCommand[0]) {
         case "T": {
             listIndex = readToDoFromFile(listIndex, userInput, savedCommand);
-            break;
         }
         case "E": {
             listIndex = readEventFromFile(listIndex, userInput, savedCommand);
@@ -76,7 +127,7 @@ public class ReadFromFile extends Duke {
             break;
         }
         return listIndex;
-    }
+    }*/
 
     /**
      * Reads the individual attributes of {@code Deadline}.
@@ -89,7 +140,7 @@ public class ReadFromFile extends Duke {
      * @param savedCommand UserInput parse into array.
      * @return ListIndex increment by 1 and with task type {@code Deadline} with attributes added to list.
      */
-    private static int readDeadlineFromFile(int listIndex, String userInput, String[] savedCommand) {
+    /*private static int readDeadlineFromFile(int listIndex, String userInput, String[] savedCommand) {
         if (savedCommand[1].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
         } else if (!(savedCommand[1].equals("0"))) {
@@ -105,9 +156,12 @@ public class ReadFromFile extends Duke {
         tasks.add(inputDescription);
 
         System.out.println("\t" + tasks.get(listIndex++).toString());
+        if (savedCommand[1].equals(DONE)) {
+            tasks.get(listIndex).markAsDone();
+        }
 
         return listIndex;
-    }
+    }*/
 
     /**
      * Reads the individual attributes of {@code Event}.
@@ -120,10 +174,11 @@ public class ReadFromFile extends Duke {
      * @param savedCommand UserInput parse into array.
      * @return ListIndex increment by 1 and with task type {@code Event} with attributes added to list.
      */
-    private static int readEventFromFile(int listIndex, String userInput, String[] savedCommand) {
+    /*private static int readEventFromFile(int listIndex, String userInput, String[] savedCommand) {
         if (savedCommand[1].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
-        } else if (!savedCommand[1].equals("0")) {
+        } else
+            if (!savedCommand[1].equals("0")) {
             displayReadFromError();
 
             return listIndex;
@@ -136,9 +191,11 @@ public class ReadFromFile extends Duke {
         tasks.add(inputDescription);
 
         System.out.println("\t" + tasks.get(listIndex++).toString());
-
+        if (savedCommand[1].equals(DONE)) {
+            tasks.get(listIndex).markAsDone();
+        }
         return listIndex;
-    }
+    }*/
 
     /**
      * Reads the individual attributes of {@code ToDo}.
@@ -151,7 +208,7 @@ public class ReadFromFile extends Duke {
      * @param savedCommand UserInput parse into array.
      * @return ListIndex increment by 1 and with task type {@code ToDo} with attributes added to list.
      */
-    private static int readToDoFromFile(int listIndex, String userInput, String[] savedCommand) {
+    /*private static int readToDoFromFile(int listIndex, String userInput, String[] savedCommand) {
         if (savedCommand[1].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
         } else if (!savedCommand[1].equals("0")) {
@@ -163,10 +220,12 @@ public class ReadFromFile extends Duke {
         userInput = userInput.substring(4);
         Task inputDescription = new ToDo(userInput);
         tasks.add(inputDescription);
-
+        if (savedCommand[1].equals("1")) {
+            tasks.get(listIndex).markAsDone();
+        }
         System.out.println("\t" + tasks.get(listIndex++).toString());
 
         return listIndex;
-    }
+    }*/
 
 }

@@ -141,9 +141,9 @@ public class TaskList extends Duke {
         drawLines();
         System.out.println("Noted. I've removed this task:");
         System.out.println("\t" + tasks.get(--removeIndex).toString());
-        drawLines();
         tasks.remove(removeIndex);
         printListIndex(--listIndex);
+        drawLines();
 
         return listIndex;
     }
