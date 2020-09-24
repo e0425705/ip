@@ -118,6 +118,8 @@ public class TaskList extends Duke {
             String year = data.getYear() + ", ";
             if (time < 0000 || time > 2400) {
                 return "error";
+            } else if (time%100 > 60) {
+                return "error";
             }
             String output = day + month + year + timeInput;
 
