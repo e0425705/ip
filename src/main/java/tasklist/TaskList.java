@@ -16,12 +16,18 @@ import static ui.Ui.printListIndex;
 import static ui.Ui.printOutput;
 
 /**
- * contains the task list e.g., it has operations to add/delete/find tasks in the list
- * and processes the date and time input by user
+ * Contains task list.
+ *
+ * It has operations to add/delete/find tasks in the list
+ * and to process date and time input by user for task type {@code Deadline} and {@code Event}.
  */
 public class TaskList extends Duke {
     /**
+     * Adds a ToDO type task to the list.
      *
+     * @param userInput Line that user input.
+     * @param listIndex Number of tasks in list..
+     * @return Updated listIndex.
      */
     public static int addToDo(String userInput, int listIndex) {
         userInput = userInput.substring(4).trim();
@@ -33,7 +39,13 @@ public class TaskList extends Duke {
     }
 
     /**
+     * Adds an Event type task to the list.
+     * Returns updated index of list.
+     * If the input by user has errors, -1 is returned.
      *
+     * @param userInput Line that user input.
+     * @param listIndex Number of tasks in list.
+     * @return Updated listIndex if there is no error.
      */
     public static int addEvent(String userInput, int listIndex) {
         userInput = userInput.substring(5).trim();
@@ -54,7 +66,13 @@ public class TaskList extends Duke {
     }
 
     /**
+     * Adds an Deadline type task to the list.
+     * Returns updated index of list.
+     * If the input by user has errors, -1 is returned.
      *
+     * @param userInput Line that user input.
+     * @param listIndex Number of tasks in list.
+     * @return Updated listIndex if there is no error.
      */
     public static int addDeadline(String userInput, int listIndex) {
         userInput = userInput.substring(8).trim();
@@ -74,21 +92,31 @@ public class TaskList extends Duke {
         return listIndex;
     }
 
-    /** */
+    /**
+     * Processes the date and time input by user.
+     * Returns the conversion of user input in the format e.g. 21 SEPTEMBER 2020, 1600.
+     * If the input format has errors, a String "error" is returned.
+     *
+     * @param dateTimeInput Date and time input by user.
+     * @return Date and time in the format e.g. 21 SEPTEMBER 2020, 1600.
+     * @throws DateTimeException If format is inaccurate.
+     */
     public static String processDateTime(String dateTimeInput) {
         int indexOfT = dateTimeInput.indexOf('t');
         if (indexOfT == -1) {
             return "error";
         }
+
         String dateInput = dateTimeInput.substring(0, indexOfT);
         String timeInput = dateTimeInput.substring(indexOfT + 1);
         int time = Integer.parseInt(timeInput);
-        try{
+
+        try {
             LocalDate data = LocalDate.parse(dateInput);
             String day = data.getDayOfMonth() + " ";
             String month = data.getMonth() + " ";
             String year = data.getYear() + ", ";
-            if(time < 0000 || time > 2400) {
+            if (time < 0000 || time > 2400) {
                 return "error";
             }
             String output = day + month + year + timeInput;
@@ -100,21 +128,30 @@ public class TaskList extends Duke {
     }
 
     /**
+     * Deletes the task at index deleteListIndex of list.
      *
+     * @param deleteListIndex Index in the list to be deleted.
+     * @param listIndex Current number of tasks in list.
+     * @return Updated index of list value.
      */
-    public static int deleteTask(int listIndex, String index) {
-        int removeIndex = Integer.parseInt(index);
+    public static int deleteTask(int listIndex, String deleteListIndex) {
+        int removeIndex = Integer.parseInt(deleteListIndex);
         drawLines();
         System.out.println("Noted. I've removed this task:");
         System.out.println("\t" + tasks.get(--removeIndex).toString());
+        drawLines();
         tasks.remove(removeIndex);
         printListIndex(--listIndex);
-        drawLines();
 
         return listIndex;
     }
 
-    /** */
+    /**
+     * Finds for tasks with description matching to filterString.
+     *
+     * @param filterString Keyword user wants to find in list of tasks.
+     * @return Arraylist with tasks containing @param keyword.
+     */
     public static ArrayList<Task> findKeyword(ArrayList<Task> tasksData, String filterString) {
         ArrayList<Task> filteredTaskList = (ArrayList<Task>) tasksData.stream()
                 .filter((s) -> s.getDescription().contains(filterString))
