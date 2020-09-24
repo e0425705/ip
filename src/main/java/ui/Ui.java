@@ -62,7 +62,7 @@ public class Ui extends Duke {
      * Prints out hello message.
      */
     public static void helloMessage() {
-        String hello = "Hello! I'm duke.\n"
+        String hello = "Hello! I'm Duke.\n"
                 + "What can I do for you today?";
         System.out.println(hello);
     }
@@ -210,7 +210,7 @@ public class Ui extends Duke {
                 + "\ttodo x - x is the task description\n"
                 + "\tdeadline x /by DATETIME - x is the task description and y is the deadline date and time\n"
                 + "\tevent x /at DATETIME - x is the task description and y is the event date and time\n"
-                + "\t\tthe format for DATETIME is YYYY-MM-DDtHHmm, where\n"
+                + "\t\tFormat for DATETIME is YYYY-MM-DDtHHmm, where\n"
                 + "\t\tY = year, M = month, D = day, H = hour, m = minute\n"
                 + "\tdelete x - removes the task located at index x of the list\n"
                 + "\tfind y - looks for task description with y included\n"

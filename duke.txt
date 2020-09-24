@@ -1,4 +1,0 @@
-T 0 eat
-T 0 sleep
-E 0 sleep | 21 SEPTEMBER 2020, 1600
-E 0 now | 8 SEPTEMBER 2020, 1500
