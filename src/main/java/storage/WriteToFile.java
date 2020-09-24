@@ -15,7 +15,7 @@ public class WriteToFile extends Duke {
     /**
      * Encodes the {@code tasks} into a decodable and readable string representation.
      *
-     * @throws Exception if an error occurs writing to storage
+     * @throws Exception If an error occurs when writing to file.
      */
     public static void writeToFile() {
         try {

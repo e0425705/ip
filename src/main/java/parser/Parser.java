@@ -1,11 +1,9 @@
 package parser;
 
 import duke.Duke;
-import duke.task.Task;
 
 import java.util.Scanner;
 
-import static tasklist.TaskList.findKeyword;
 import static ui.Ui.displayByeMessage;
 import static ui.Ui.displayCaseEmptyInput;
 import static ui.Ui.displayDeadline;
@@ -19,7 +17,6 @@ import static ui.Ui.displayList;
 import static ui.Ui.displaySaveMessage;
 import static ui.Ui.displayStringIndexOutOfBoundsExceptionMessage;
 import static ui.Ui.displayToDo;
-import static ui.Ui.drawLines;
 
 /**
  * Deals with making sense of the user command.
@@ -29,6 +26,9 @@ public class Parser extends Duke {
      * Parses user input into command for execution.
      *
      * @param input full user input string
+     * @param listIndex Number of tasks in list.
+     * @throws StringIndexOutOfBoundsException When user input has missing or erroneous fields.
+     * @throws Exception When user input is not understood.
      */
     public static int decideAction(Scanner input, int listIndex) {
         while (true) {

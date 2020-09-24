@@ -6,8 +6,8 @@ public class Deadline extends Task {
     /**
      * Subclass of class Task.
      *
-     * @param description task description input by user
-     * @param by date and time of task input by user
+     * @param description Task description input by user.
+     * @param by Date and time of task type {@code Deadline} input by user.
      */
     public Deadline(String description, String by) {
         super(description);

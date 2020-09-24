@@ -4,7 +4,7 @@ public class ToDo extends Task {
     /**
      * Subclass of class Task.
      *
-     * @param description task description input by user
+     * @param description Task description input by user.
      */
     public ToDo(String description) {
         super(description);

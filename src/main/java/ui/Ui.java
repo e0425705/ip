@@ -34,7 +34,8 @@ public class Ui extends Duke {
      * Prints out a line divider.
      */
     public static void drawLines() {
-        System.out.println("--------------------------------------------------------------------------------------------");
+        System.out.println("--------------------------------------------------------------------"
+                + "------------------------");
     }
 
     /**
@@ -98,7 +99,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out message when a task is marked as done
+     * Prints out message when a task is marked as done by user.
      */
     public static void displayDone(String givenCommand) {
         int taskDone = Integer.parseInt(givenCommand);
@@ -110,7 +111,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out message when a ToDo task is input.
+     * Prints out message when a {@code ToDo} task is input by user.
      */
     public static int displayToDo(String userInput, int listIndex) {
         if (userInput.toLowerCase().trim().equals("todo")) {
@@ -124,7 +125,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out message when a Deadline task is input.
+     * Prints out message when a {@code Deadline} task is input by user.
      */
     public static int displayDeadline(String userInput, int listIndex) {
         if (addDeadline(userInput, listIndex) == -1) {
@@ -136,7 +137,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out message when an Event task is input.
+     * Prints out message when an {@code Event} task is input by user.
      */
     public static int displayEvent(String userInput, int listIndex) {
         if (addEvent(userInput, listIndex) == -1) {
@@ -150,7 +151,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out bye message.
+     * Prints out bye message and let the user know that the current list has been saved to file.
      */
     public static void displayByeMessage() {
         saveFile();
@@ -163,7 +164,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out acknowledgement that current list is saved
+     * Prints out acknowledgement of saving current list in file.
      */
     public static void displaySaveMessage() {
         saveFile();
@@ -173,16 +174,17 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out tasks that contains the keyward
+     * Prints out tasks that contains the keyword.
      *
-     * @param keyword user input string
+     * @param keyword String that user is looking for in current list.
      */
     public static void displayFind(String keyword, int listIndex) {
         keyword = keyword.substring(4).trim();
-        drawLines();
         int[] indexesOfKeyword = new int[20];
         int indexToSaveKeyword = 0;
         int indexToAccess = 0;
+
+        drawLines();
         System.out.println("Here are the matching tasks in your list:");
         for (Task t : findKeyword(tasks, keyword)) {
             for (int i = 0; i < listIndex; i++) {
@@ -192,7 +194,6 @@ public class Ui extends Duke {
             }
             System.out.println("\t" + indexesOfKeyword[indexToAccess++] + "." + t);
         }
-
         drawLines();
     }
 
@@ -222,7 +223,7 @@ public class Ui extends Duke {
     /**
      * Prints out acknowledgement that task at index listIndex is deleted.
      *
-     * @param deleteListIndex index in the list to be deleted
+     * @param deleteListIndex Index in the list to be deleted.
      */
     public static int displayDeleteMessage(int listIndex, String deleteListIndex) {
         listIndex = deleteTask(listIndex, deleteListIndex);
@@ -231,7 +232,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints the error message when StringIndexOutOfBoundsException occurred.
+     * Prints the error message when StringIndexOutOfBoundsException occurs.
      */
     public static void displayStringIndexOutOfBoundsExceptionMessage() {
         drawLines();
@@ -241,7 +242,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints error message when Exception occurred.
+     * Prints error message when Exception occurs.
      */
     public static void displayExceptionMessage() {
         drawLines();
@@ -253,7 +254,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints error message when IOException occurred.
+     * Prints error message when IOException occurs.
      */
     public static void displayIOExceptionMessage(IOException e) {
         System.out.println("An error occurred.");

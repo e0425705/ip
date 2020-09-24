@@ -27,10 +27,11 @@ public class Duke {
      * */
     public static void main(String[] args) {
         displayWelcomeMessage();
+
+        // Current number of tasks in list.
         int listIndex = 0;
 
         File file = new File(DEFAULT_STORAGE_FILEPATH);
-
         listIndex = loadFile(file, listIndex);
 
         Scanner input = new Scanner(System.in);
