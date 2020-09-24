@@ -1,7 +1,6 @@
 T 1 example1
-D 1 now | 8 SEPTEMBER 2020, 1600
-E 1 sleep | 8 SEPTEMBER 2030, 1700
-D 0 sleeping | 3 OCTOBER 2017, 1500
-E 0 drop down | 12 DECEMBER 2019, 1123
-T 1 sleep
-T 1 lap
+E 0 example2 | 24 SEPTEMBER 2020, 2057
+D 0 example3 | 24 SEPTEMBER 2020, 2100
+D 0 this thing | 8 SEPTEMBER 2019, 1700
+E 1 that thing | 18 SEPTEMBER 2016, 1500
+T 0 bye

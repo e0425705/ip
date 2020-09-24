@@ -108,9 +108,15 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    --------------------------------------------------------------------------------------------
    Noted. I've removed this task:
    	[T][✘] something
-   --------------------------------------------------------------------------------------------
    Now you have 5 tasks in the list
+   --------------------------------------------------------------------------------------------
    6.8 By inputting "find x", this 
+   --------------------------------------------------------------------------------------------
+   Here are the matching tasks in your list:
+   	1.[T][✓] example1
+   	2.[E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
+   	3.[D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
+   --------------------------------------------------------------------------------------------
    6.9 By inputting "save", this saves the current list into file duke.txt. If the file has been successfully saved, the following would be printed out:
    --------------------------------------------------------------------------------------------
    The current list has been saved.
