@@ -1,6 +1,7 @@
-T 1 example1
-E 0 example2 | 24 SEPTEMBER 2020, 2057
-D 0 example3 | 24 SEPTEMBER 2020, 2100
-D 1 this thing | 8 SEPTEMBER 2019, 1700
-E 1 that thing | 18 SEPTEMBER 2016, 1500
-T 0 eat
+T 1 study
+D 0 do IP | 8 SEPTEMBER 2019, 1700
+E 0 study CS2113 | 18 SEPTEMBER 2016, 1500
+T 0 one
+E 0 sleep | 7 AUGUST 2019, 1500
+D 0 eat | 3 SEPTEMBER 2019, 1500
+D 0 prepare oral | 9 DECEMBER 2019, 1500

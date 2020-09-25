@@ -127,12 +127,11 @@ public class Ui extends Duke {
     /**
      * Prints out message when a {@code Deadline} task is input by user.
      */
-    public static int displayDeadline(String userInput, int listIndex) {
+    public static int displayDeadlineError(String userInput, int listIndex) {
         if (addDeadline(userInput, listIndex) == -1) {
             drawLines();
-            System.out.println("error in date-time input!\n"
-                    + "The allowed input for date and time is YYYY-MM-DDtHH:MM\n"
-                    + "For time, the input is limited to 0000 to 2359.");
+            System.out.println("Sorry I do not understand what you mean!\n"
+                    + "Do bring out help list via the command help for the specific format!");
             drawLines();
         } else {
             listIndex++;
@@ -143,12 +142,11 @@ public class Ui extends Duke {
     /**
      * Prints out message when an {@code Event} task is input by user.
      */
-    public static int displayEvent(String userInput, int listIndex) {
+    public static int displayEventError(String userInput, int listIndex) {
         if (addEvent(userInput, listIndex) == -1) {
             drawLines();
-            System.out.println("error in date-time input!\n"
-                    + "The allowed input for date and time is YYYY-MM-DDtHH:MM\n"
-                    + "For time, the input is limited to 0000 to 2359.");
+            System.out.println("Sorry I do not understand what you mean!\n"
+                    + "Do bring out help list via the command help for the specific format!");
             drawLines();
         } else {
             listIndex++;

@@ -6,10 +6,10 @@ import java.util.Scanner;
 
 import static ui.Ui.displayByeMessage;
 import static ui.Ui.displayCaseEmptyInput;
-import static ui.Ui.displayDeadline;
+import static ui.Ui.displayDeadlineError;
 import static ui.Ui.displayDeleteMessage;
 import static ui.Ui.displayDone;
-import static ui.Ui.displayEvent;
+import static ui.Ui.displayEventError;
 import static ui.Ui.displayExceptionMessage;
 import static ui.Ui.displayFind;
 import static ui.Ui.displayHelpMessage;
@@ -46,9 +46,9 @@ public class Parser extends Duke {
                 } else if (givenCommand[0].equals("todo")) {
                     listIndex = displayToDo(userInput, listIndex);
                 } else if (givenCommand[0].equals("deadline")) {
-                    listIndex = displayDeadline(userInput, listIndex);
+                    listIndex = displayDeadlineError(userInput, listIndex);
                 } else if (givenCommand[0].equals("event")) {
-                    listIndex = displayEvent(userInput, listIndex);
+                    listIndex = displayEventError(userInput, listIndex);
                 } else if (givenCommand[0].trim().equals("bye")) {
                     displayByeMessage();
                     break;
