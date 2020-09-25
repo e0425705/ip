@@ -233,9 +233,19 @@ public class Ui extends Duke {
      * @param deleteListIndex Index in the list to be deleted.
      */
     public static int displayDeleteMessage(int listIndex, String deleteListIndex) {
-        listIndex = deleteTask(listIndex, deleteListIndex);
-
+        int removeIndex = Integer.parseInt(deleteListIndex);
+        if (removeIndex > listIndex) {
+            displayDeleteErrorMessage();
+        } else {
+            listIndex = deleteTask(listIndex, removeIndex);
+        }
         return listIndex;
+    }
+
+    private static void displayDeleteErrorMessage() {
+        drawLines();
+        System.out.println("Sorry the index of task to be remove cannot be found!");
+        drawLines();
     }
 
     /**

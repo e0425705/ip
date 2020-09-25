@@ -132,12 +132,11 @@ public class TaskList extends Duke {
     /**
      * Deletes the task at index deleteListIndex of list.
      *
-     * @param deleteListIndex Index in the list to be deleted.
+     * @param removeIndex Index in the list to be deleted.
      * @param listIndex Current number of tasks in list.
      * @return Updated index of list value.
      */
-    public static int deleteTask(int listIndex, String deleteListIndex) {
-        int removeIndex = Integer.parseInt(deleteListIndex);
+    public static int deleteTask(int listIndex, int removeIndex) {
         drawLines();
         System.out.println("Noted. I've removed this task:");
         System.out.println("\t" + tasks.get(--removeIndex).toString());
