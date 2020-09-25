@@ -32,7 +32,7 @@ Given below are instructions on how to use it.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
-   
+   ```
    --------------------------------------------------------------------------------------------
    Hello from
     ____        _        
@@ -62,7 +62,7 @@ Given below are instructions on how to use it.
    --------------------------------------------------------------------------------------------
    Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    --------------------------------------------------------------------------------------------
-   
+   ```
    For the "Created new file..." part, it will differ depending on where you save the application.
    
         Here are some commands you can try:
