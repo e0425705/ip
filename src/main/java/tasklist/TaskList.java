@@ -116,7 +116,7 @@ public class TaskList extends Duke {
             String day = data.getDayOfMonth() + " ";
             String month = data.getMonth() + " ";
             String year = data.getYear() + ", ";
-            if (time < 0000 || time > 2400) {
+            if (time < 0000 || time >= 2400) {
                 return "error";
             } else if (time%100 > 60) {
                 return "error";

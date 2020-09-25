@@ -130,8 +130,9 @@ public class Ui extends Duke {
     public static int displayDeadline(String userInput, int listIndex) {
         if (addDeadline(userInput, listIndex) == -1) {
             drawLines();
-            System.out.println("error in date-time input!");
-            System.out.println("The allowed input for date and time is YYYY-MM-DDtHH:MM");
+            System.out.println("error in date-time input!\n"
+                    + "The allowed input for date and time is YYYY-MM-DDtHH:MM\n"
+                    + "For time, the input is limited to 0000 to 2359.");
             drawLines();
         } else {
             listIndex++;
@@ -145,8 +146,9 @@ public class Ui extends Duke {
     public static int displayEvent(String userInput, int listIndex) {
         if (addEvent(userInput, listIndex) == -1) {
             drawLines();
-            System.out.println("error in date-time input!");
-            System.out.println("The allowed input for date and time is YYYY-MM-DDtHHmm");
+            System.out.println("error in date-time input!\n"
+                    + "The allowed input for date and time is YYYY-MM-DDtHH:MM\n"
+                    + "For time, the input is limited to 0000 to 2359.");
             drawLines();
         } else {
             listIndex++;
