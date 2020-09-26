@@ -99,40 +99,11 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    1. If there are any further prompts, accept the defaults.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. 
    1. For first time user, if the setup is correct, the following would be printed out:
-   This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
-   This file will only be created once.
-   ```
-   --------------------------------------------------------------------------------------------
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
    
-   --------------------------------------------------------------------------------------------
-   Hello! I'm Duke.
-   What can I do for you today?
-   --------------------------------------------------------------------------------------------
-   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-   The expected format of input values: 
-    list - gives the list of data inputted
-   	help - this pulls out the commands available
-   	done x - x is the index of data that you want to mark as done
-   	todo x - x is the task description
-   	deadline x /by DATETIME - x is the task description and y is the deadline date and time
-   	event x /at DATETIME - x is the task description and y is the event date and time
-   		Format for DATETIME is YYYY-MM-DDtHHmm, where
-   		Y = year, M = month, D = day, H = hour, m = minute
-   	delete x - removes the task located at index x of the list
-   	find y - looks for task description with y included
-   	save - this saves the current list
-   	bye - this terminates the program
-   --------------------------------------------------------------------------------------------
-   Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
-   --------------------------------------------------------------------------------------------
-   ```
-  
+   
+   >This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
+   >This file will only be created once.
+
   
    1. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
    ```
@@ -169,7 +140,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    Now you have 3 tasks in the list
    --------------------------------------------------------------------------------------------
    ```
-   In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
+   >In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
    
    1. An example of a unsuccessful run can look like:
    ```
@@ -210,14 +181,14 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    Now you have 3 tasks in the list
    --------------------------------------------------------------------------------------------
    ```
-   The block of error message implies that there is a line of code between task example2 and example3 that the program cannot decode.
-   This requires the user to open duke.txt and check for the error.
-   If the issue is due to an error in the input in duke.txt, the user can re-enter the task into the list via `todo`, `deadline` or `event`.
-   Do note that the program will not keep the line in which there was an error in the Duke program.
-      The whole storage file duke.txt would be overwritten by the current list in program when `save` or `bye` command inputted.
+   >The block of error message implies that there is a line of code between task example2 and example3 that the program cannot decode.
+   >This requires the user to open duke.txt and check for the error.
+   >If the issue is due to an error in the input in duke.txt, the user can re-enter the task into the list via `todo`, `deadline` or `event`.
+   >Do note that the program will not keep the line in which there was an error in the Duke program.
+      >The whole storage file duke.txt would be overwritten by the current list in program when `save` or `bye` command inputted.
       
    1. The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 
-   It can be pulled out once again with the command `help`.
+   >It can be pulled out once again with the command `help`.
    
 ### Add task type todo
 Format: `todo TASK_DESCRIPTION`
@@ -249,7 +220,7 @@ Format: `deadline TASK_DESCRIPTION /by DATE_TIME`
 Parameters:
 * `TASK_DESCRIPTION`: Task description
 * `DATE_TIME`: Date and time in the format YYYY-MM-DDtHHmm, 
-where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
 
 Examples:
 * `deadline do IP /by 2019-09-08t1700`
@@ -287,7 +258,7 @@ Format: `event TASK_DESCRIPTION /at DATE_TIME`
 Parameters:
 * `TASK_DESCRIPTION`: Task description
 * `DATE_TIME`: Date and time in the format YYYY-MM-DDtHHmm, 
-where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
 
 Examples:
 * `event study CS2113 /at 2016-09-18t1500`
