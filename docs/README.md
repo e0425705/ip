@@ -142,7 +142,7 @@ Now you have 3 tasks in the list
    * In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
    
    
-   An example of an unsuccessful run can look like:
+   An example of a run with error can look like:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -183,8 +183,10 @@ Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
    * The block of error message implies that there is a line of code between task example2 and example3 in the storage file duke.txt that the program cannot decode.
-   * This requires the user to open duke.txt and check for the error.
+   * The other lines that the program can decode would be added into list. And program is ready for input.
+   * To solve the error, the user is required to open duke.txt and check for the error.
    * If the issue is due to an error in the input in duke.txt, the user will have to re-enter the task into the list via `todo`, `deadline` or `event`.
+   * Else if the issue is due to an unwanted line, it can be ignored.
    * Do note that the program will not keep the line in which there was an error in the Duke program.
       * The whole storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
       
