@@ -31,42 +31,8 @@ Given below are instructions on how to use it.
    1. Click `Open or Import`.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
+1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`.
 
-   ```javascript
-   --------------------------------------------------------------------------------------------
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
-      
-   --------------------------------------------------------------------------------------------
-   Hello! I'm Duke.
-   What can I do for you today?
-   --------------------------------------------------------------------------------------------
-   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-      The expected format of input values: 
-        list - gives the list of data inputted
-      	help - this pulls out the commands available
-      	done x - x is the index of data that you want to mark as done
-      	todo x - x is the task description
-      	deadline x /by DATETIME - x is the task description and y is the deadline date and time
-      	event x /at DATETIME - x is the task description and y is the event date and time
-      		Format for DATETIME is YYYY-MM-DDtHHmm, where
-      		Y = year, M = month, D = day, H = hour, m = minute
-      	delete x - removes the task located at index x of the list
-      	find y - looks for task description with y included
-      	save - this saves the current list
-      	bye - this terminates the program
-   --------------------------------------------------------------------------------------------
-   Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
-   --------------------------------------------------------------------------------------------
-   ```
-
-   * For the "Created new file..." part, the path will differ depending on where you save the application.
-   
         Here are some commands you can try:
         * `todo CS2113`: Add "todo CS2113" into the task list.
         * `list`: Print out the list of all tasks.
@@ -76,7 +42,7 @@ Given below are instructions on how to use it.
         * `help`: Prints out the commands available and their respective formats.
         * `save`: Saves current list into storage file.
         * `bye`: Saves current list into storage file and exits application.
-   * Do refer to Features section below for more details.
+1. Refer to Features below for more commands and their details.
 
 ## Features
 * Duke has 3 types of task available. Which are `todo`, `deadline` and `event`.
@@ -101,57 +67,58 @@ Given below are instructions on how to use it.
    1. If there are any further prompts, accept the defaults.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. 
    1. For first time user, if the setup is correct, the following would be printed out:
-   ```javascript
-   --------------------------------------------------------------------------------------------
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+   
+```javascript
+--------------------------------------------------------------------------------------------
+Hello from
+ ____        _        
+|  _ \ _   _| | _____ 
+| | | | | | | |/ / _ \
+| |_| | |_| |   <  __/
+|____/ \__,_|_|\_\___|
          
-   --------------------------------------------------------------------------------------------
-   Hello! I'm Duke.
-   What can I do for you today?
-   --------------------------------------------------------------------------------------------
-   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-      The expected format of input values: 
-        list - gives the list of data inputted
-       	help - this pulls out the commands available
-       	done x - x is the index of data that you want to mark as done
-      	todo x - x is the task description
-       	deadline x /by DATETIME - x is the task description and y is the deadline date and time
-       	event x /at DATETIME - x is the task description and y is the event date and time
-      		Format for DATETIME is YYYY-MM-DDtHHmm, where
-       		Y = year, M = month, D = day, H = hour, m = minute
-       	delete x - removes the task located at index x of the list
-       	find y - looks for task description with y included
-       	save - this saves the current list
-      	bye - this terminates the program
-   --------------------------------------------------------------------------------------------
-   Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
-   --------------------------------------------------------------------------------------------
-   ```
+-------------------------------------------------------------------------------------------
+Hello! I'm Duke.
+What can I do for you today?
+--------------------------------------------------------------------------------------------
+Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
+    The expected format of input values: 
+    list - gives the list of data inputted
+    help - this pulls out the commands available
+    done x - x is the index of data that you want to mark as done
+    todo x - x is the task description
+    deadline x /by DATETIME - x is the task description and y is the deadline date and time
+    event x /at DATETIME - x is the task description and y is the event date and time
+        Format for DATETIME is YYYY-MM-DDtHHmm, where
+        Y = year, M = month, D = day, H = hour, m = minute
+    delete x - removes the task located at index x of the list
+    find y - looks for task description with y included
+    save - this saves the current list
+    bye - this terminates the program
+--------------------------------------------------------------------------------------------
+Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
+--------------------------------------------------------------------------------------------
+```
    >This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
    >This file will only be created once.
   
    1. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
    
-   ```javascript
-   --------------------------------------------------------------------------------------------
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+```javascript
+--------------------------------------------------------------------------------------------
+Hello from
+ ____        _        
+|  _ \ _   _| | _____ 
+| | | | | | | |/ / _ \
+| |_| | |_| |   <  __/
+|____/ \__,_|_|\_\___|
       
-   --------------------------------------------------------------------------------------------
-   Hello! I'm Duke.
-   What can I do for you today?
-   --------------------------------------------------------------------------------------------
-   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-   The expected format of input values: 
+--------------------------------------------------------------------------------------------
+Hello! I'm Duke.
+What can I do for you today?
+-------------------------------------------------------------------------------------------
+Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
+    The expected format of input values: 
     list - gives the list of data inputted
    	help - this pulls out the commands available
    	done x - x is the index of data that you want to mark as done
@@ -164,33 +131,34 @@ Given below are instructions on how to use it.
     find y - looks for task description with y included
    	save - this saves the current list
    	bye - this terminates the program
-   --------------------------------------------------------------------------------------------
-   	[T][✘] example1
-   	[E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
-   	[D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
-   Now you have 3 tasks in the list
-   --------------------------------------------------------------------------------------------
-   ```
+--------------------------------------------------------------------------------------------
+    [T][✘] example1
+    [E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
+    [D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
+Now you have 3 tasks in the list
+--------------------------------------------------------------------------------------------
+```
    * In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
    
    1. An example of an unsuccessful run can look like:
-   ```javascript
-   --------------------------------------------------------------------------------------------
-   Hello from
-    ____        _        
-   |  _ \ _   _| | _____ 
-   | | | | | | | |/ / _ \
-   | |_| | |_| |   <  __/
-   |____/ \__,_|_|\_\___|
+   
+```javascript
+--------------------------------------------------------------------------------------------
+Hello from
+ ____        _        
+|  _ \ _   _| | _____ 
+| | | | | | | |/ / _ \
+| |_| | |_| |   <  __/
+|____/ \__,_|_|\_\___|
          
-   --------------------------------------------------------------------------------------------
-   Hello! I'm Duke.
-   What can I do for you today?
-   --------------------------------------------------------------------------------------------
-   Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-   The expected format of input values: 
+--------------------------------------------------------------------------------------------
+Hello! I'm Duke.
+What can I do for you today?
+--------------------------------------------------------------------------------------------
+Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
+The expected format of input values: 
     list - gives the list of data inputted
-   	help - this pulls out the commands available
+    help - this pulls out the commands available
    	done x - x is the index of data that you want to mark as done
    	todo x - x is the task description
    	deadline x /by DATETIME - x is the task description and y is the deadline date and time
@@ -201,17 +169,17 @@ Given below are instructions on how to use it.
     find y - looks for task description with y included
    	save - this saves the current list
    	bye - this terminates the program
-   --------------------------------------------------------------------------------------------
-   	[T][✘] example1
-   	[E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
-   --------------------------------------------------------------------------------------------
-   An error has occurred here!
-   Do check file source if there is a corruption of data!
-   --------------------------------------------------------------------------------------------
-   	[D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
-   Now you have 3 tasks in the list
-   --------------------------------------------------------------------------------------------
-   ```
+--------------------------------------------------------------------------------------------
+    [T][✘] example1
+    [E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
+--------------------------------------------------------------------------------------------
+An error has occurred here!
+Do check file source if there is a corruption of data!
+--------------------------------------------------------------------------------------------
+    [D][✘] example3 (by: 24 SEPTEMBER 2020, 2100)
+Now you have 3 tasks in the list
+--------------------------------------------------------------------------------------------
+```
    * The block of error message implies that there is a line of code between task example2 and example3 in the storage file duke.txt that the program cannot decode.
    * This requires the user to open duke.txt and check for the error.
    * If the issue is due to an error in the input in duke.txt, the user will have to re-enter the task into the list via `todo`, `deadline` or `event`.
@@ -464,17 +432,18 @@ Hope to see you again soon!
 ```
 
 ## Command Summary
+
  Action    | Format, Example 
 ---------- | ----------              
 ToDo | `todo TASK_DESCRIPTION`, `todo study` 
 Deadline | `deadline TASK_DESCRIPTION /by DATE_TIME`, `deadline do IP /by 2019-09-08t1700`
 Event | `event TASK_DESCRIPTION /at DATE_TIME`, `event study CS2113 /at 2016-09-18t1500`
-List | `list`, `list`
+List | `list`
 Done | `done TASK_INDEX`, `done 1`
 Delete | `delete TASK_INDEX`, `delete 1`
 Find | `find KEYWORD`, `find do`
-Help | `help`, `help`
-Save | `save`, `save`
-Exit | `bye`, `bye`
+Help | `help`
+Save | `save`
+Exit | `bye`
 
 ### --- END OF USER GUIDE ---
