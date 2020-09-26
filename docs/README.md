@@ -8,17 +8,17 @@ Given below are instructions on how to use it.
 ## Table of Contents
 * [Quick Start]
 * [Features]
-    * [Setting up program in Intellij]
-    * [Adding a task type todo]: `todo`
-    * [Adding a task type deadline]: `deadline`
-    * [Adding a task type event]: `event`
-    * [Displaying the task list]: `list`
-    * [Marking a task as done]: `done`
-    * [Deleting a task from list]: `delete`
-    * [Finding a keyword in list]: `find`
-    * [Printing the help list]: `help`
-    * [Saving the current list to file]: `save`
-    * [Exiting the program] 
+    * [Setting up program in Intellij](#setting-up-program-in-intellij)
+    * [Adding a task type todo](#adding-a-task-type-todo): `todo`
+    * [Adding a task type deadline](#adding-a-task-type-deadline): `deadline`
+    * [Adding a task type event](#adding-a-task-type-event): `event`
+    * [Displaying the task list](#displaying-the-task-list): `list`
+    * [Marking a task as done](#marking-a-task-as-done): `done`
+    * [Deleting a task from list](#deleting-a-task-from-list): `delete`
+    * [Finding a keyword in list](#finding-a-keyword-in-list): `find`
+    * [Printing the help list](#printing-the-help-list): `help`
+    * [Saving the current list to file](#saving-the-current-list-to-file): `save`
+    * [Exiting the program](#exiting-the-program): `bye`
 * [Command Summary] 
 
 ## Quick Start
@@ -102,7 +102,7 @@ Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    >This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
    >This file will only be created once.
   
-   1. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
+   2. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ Now you have 3 tasks in the list
 ```
    * In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
    
-   1. An example of an unsuccessful run can look like:
+   3. An example of an unsuccessful run can look like:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -186,10 +186,12 @@ Now you have 3 tasks in the list
    * Do note that the program will not keep the line in which there was an error in the Duke program.
       * The whole storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
       
-   1. The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 
+   4. The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 
       * It can be printed out once again with the command `help`.
    
 ### Adding a task type todo
+Adds a task of type todo to the list.
+
 Format: `todo **TASK_DESCRIPTION**`
 
 Parameters:
@@ -214,6 +216,8 @@ The description of a todo cannot be empty.
 ```
 
 ### Adding a task type deadline
+Adds a task of type deadline to the list.
+
 Format: `deadline **TASK_DESCRIPTION** /by **DATE_TIME**`
 
 Parameters:
@@ -252,6 +256,8 @@ Please do input 'help' for the commands and their respective input format.
 >* `**DATE_TIME**` is according to the 24-hour clock. (e.g. 1800)
 
 ### Adding a task type event
+Adds a task of type event to the list.
+
 Format: `event **TASK_DESCRIPTION** /at **DATE_TIME**`
 
 Parameters:
@@ -290,6 +296,8 @@ Please do input 'help' for the commands and their respective input format.
 >* `**DATE_TIME**` is according to the 24-hour clock. (e.g. 1800)
 
 ### Displaying the task list
+Prints out all tasks added to list.
+
 Format: `list`
 
 Examples:
@@ -311,6 +319,8 @@ Here is the task in the list
 ```
 
 ### Marking a task as done
+Marks the specified task as completed.
+
 Format: `done **TASK_INDEX**`
 
 Parameters:
@@ -336,6 +346,8 @@ Please do input 'help' for the commands and their respective input format.
 ```
 
 ### Deleting a task from list
+Deletes the specified task from the list.
+
 Format: `delete **TASK_INDEX**`
 
 Parameters:
@@ -360,6 +372,8 @@ Sorry the index of task to be remove cannot be found!
 ```
 
 ### Finding a keyword in list
+Find tasks with the keyword included in the task description.
+
 Format: `find **TASK_KEYWORD**`
 
 Parameters:
@@ -387,6 +401,8 @@ Here are the matching tasks in your list:
 >* `**TASK_KEYWORD**` is case-sensitive.
 
 ### Printing the help list
+Prints out the commands available and their respective input format.
+
 Format: `help`
 
 Example:
@@ -410,6 +426,8 @@ The expected format of input values:
 ```
 
 ### Saving the current list to file
+Saves current list to file without exiting program.
+
 Format: `save`
 
 Example:
@@ -420,6 +438,8 @@ The current list has been saved.
 ```
 
 ### Exiting the program
+Saves the current list to file and exits program.
+
 Format: `bye`
 
 Example:
