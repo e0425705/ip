@@ -1,4 +1,4 @@
-# Duke User Guide
+# User Guide for Duke
 Duke is a command-line application that helps you to keep track of tasks.
 It is built to cater to the needs of University students as a mean to organise tasks such as todo, event and deadline.
 More task types would be released in version 2.
@@ -31,8 +31,8 @@ Given below are instructions on how to use it.
    1. Click `Open or Import`.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
-1. 
-After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
+1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
+
    ```
    --------------------------------------------------------------------------------------------
    Hello from
@@ -64,6 +64,7 @@ After the importing is complete, locate the `src/main/java/duke.Duke.java` file,
    Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    --------------------------------------------------------------------------------------------
    ```
+
    >For the "Created new file..." part, it will differ depending on where you save the application.
    
         Here are some commands you can try:
@@ -106,6 +107,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
 
   
    1. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
+   
    ```
    --------------------------------------------------------------------------------------------
    Hello from
