@@ -131,7 +131,7 @@ public class Ui extends Duke {
         if (addDeadline(userInput, listIndex) == -1) {
             drawLines();
             System.out.println("Sorry I do not understand what you mean!\n"
-                    + "Do bring out help list via the command help for the specific format!");
+                    + "Do bring out help list via the command 'help' for the specific format!");
             drawLines();
         } else {
             listIndex++;
@@ -146,7 +146,7 @@ public class Ui extends Duke {
         if (addEvent(userInput, listIndex) == -1) {
             drawLines();
             System.out.println("Sorry I do not understand what you mean!\n"
-                    + "Do bring out help list via the command help for the specific format!");
+                    + "Do bring out help list via the command 'help' for the specific format!");
             drawLines();
         } else {
             listIndex++;
