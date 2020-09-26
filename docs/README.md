@@ -31,7 +31,8 @@ Given below are instructions on how to use it.
    1. Click `Open or Import`.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
-1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
+1. 
+After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. If the setup is correct, you should see something like the below:
    ```
    --------------------------------------------------------------------------------------------
    Hello from
@@ -63,7 +64,7 @@ Given below are instructions on how to use it.
    Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    --------------------------------------------------------------------------------------------
    ```
-   For the "Created new file..." part, it will differ depending on where you save the application.
+   >For the "Created new file..." part, it will differ depending on where you save the application.
    
         Here are some commands you can try:
         * `todo CS2113`: Add "todo CS2113" into the task list.
@@ -74,7 +75,7 @@ Given below are instructions on how to use it.
         * `help`: Prints out the commands available and their respective formats.
         * `save`: Saves current list into storage file.
         * `bye`: Saves current list into storage file and exits application.
-   1. Do refer to Features section below for more details.
+   >Do refer to Features section below for more details.
 
 ## Features
 Duke has 3 types of task available. Which are `todo`, `deadline` and `event`.
@@ -98,6 +99,8 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    1. If there are any further prompts, accept the defaults.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. 
    1. For first time user, if the setup is correct, the following would be printed out:
+   This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
+   This file will only be created once.
    ```
    --------------------------------------------------------------------------------------------
    Hello from
@@ -129,8 +132,8 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
    --------------------------------------------------------------------------------------------
    ```
-   This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
-   This file will only be created once. 
+  
+  
    1. For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
    ```
    --------------------------------------------------------------------------------------------
@@ -167,6 +170,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    --------------------------------------------------------------------------------------------
    ```
    In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
+   
    1. An example of a unsuccessful run can look like:
    ```
    --------------------------------------------------------------------------------------------
@@ -211,6 +215,7 @@ Prerequisites: JDK 11, update Intellij to the most recent version.
    If the issue is due to an error in the input in duke.txt, the user can re-enter the task into the list via `todo`, `deadline` or `event`.
    Do note that the program will not keep the line in which there was an error in the Duke program.
       The whole storage file duke.txt would be overwritten by the current list in program when `save` or `bye` command inputted.
+      
    1. The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 
    It can be pulled out once again with the command `help`.
    
@@ -258,16 +263,20 @@ Now you have 2 tasks in the list
 
 If an input which did not follow the format is input, the following would be printed out
 * `deadline prepare oral `
+```
 --------------------------------------------------------------------------------------------
 Sorry I do not understand what you mean!
 Do bring out help list via the command help for the specific format!
 --------------------------------------------------------------------------------------------
+```
 
 * `deadline`
+```
 --------------------------------------------------------------------------------------------
 The task you input has missing fields!
 Please do input 'help' for the commands and their respective input format.
 --------------------------------------------------------------------------------------------
+```
 
 >Things to take note of:
 >* `DATE_TIME` is according to the 24 hour clock. (e.g. 1800)
