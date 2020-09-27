@@ -1,7 +1,8 @@
 T 1 study
 D 0 do IP | 8 SEPTEMBER 2019, 1700
 E 0 study CS2113 | 18 SEPTEMBER 2016, 1500
-T 0 one
 E 0 sleep | 7 AUGUST 2019, 1500
 D 0 eat | 3 SEPTEMBER 2019, 1500
 D 0 prepare oral | 9 DECEMBER 2019, 1500
+T 0 sleep
+D 0 study | 25 APRIL 2020, 0000

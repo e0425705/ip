@@ -240,12 +240,21 @@ Now you have 2 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
 
-If an input which did not follow the format is inputted, the following would be printed out:
+If an input which did not follow the format is inputted, the following are examples of what would be printed out:
 * `deadline prepare oral `
 ```javascript
 --------------------------------------------------------------------------------------------
 Sorry I do not understand what you mean!
 Do bring out help list via the command 'help' for the specific format!
+--------------------------------------------------------------------------------------------
+```
+
+* `deadline study /at 2013-08-09tyyy`
+```javascript
+--------------------------------------------------------------------------------------------
+Something went wrong!! I do not understand what you mean.
+There could be an error in the way of input.
+Please do input 'help' for the commands and their respective input format.
 --------------------------------------------------------------------------------------------
 ```
 
@@ -280,12 +289,21 @@ Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
 
-If an input which did not follow the format is inputted, the following would be printed out:
+If an input which did not follow the format is inputted, the following are examples of what would be printed out:
 * `event prepare oral `
 ```javascript
 --------------------------------------------------------------------------------------------
 Sorry I do not understand what you mean!
 Do bring out help list via the command 'help' for the specific format!
+--------------------------------------------------------------------------------------------
+```
+
+* `event study for mid terms /at 2013-08-09txxx`
+```javascript
+--------------------------------------------------------------------------------------------
+Something went wrong!! I do not understand what you mean.
+There could be an error in the way of input.
+Please do input 'help' for the commands and their respective input format.
 --------------------------------------------------------------------------------------------
 ```
 
@@ -368,11 +386,20 @@ Now you have 2 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
 
-If `**TASK_INDEX**` is not found in list, the following would be printed out
+If `**TASK_INDEX**` is not found in list, the following are examples of what would be printed out
 * `delete 10`
 ```javascript
 --------------------------------------------------------------------------------------------
 Sorry the index of task to be remove cannot be found!
+--------------------------------------------------------------------------------------------
+```
+
+* `delete a`
+```javascript
+--------------------------------------------------------------------------------------------
+Something went wrong!! I do not understand what you mean.
+There could be an error in the way of input.
+Please do input 'help' for the commands and their respective input format.
 --------------------------------------------------------------------------------------------
 ```
 
