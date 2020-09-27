@@ -40,8 +40,8 @@ Given below are instructions on how to use it.
         * `delete 3`: Deletes the task in index 3 of the list.
         * `find CS`: Searches through task list for description with the CS in it.
         * `help`: Prints out the commands available and their respective formats.
-        * `save`: Saves current list into storage file.
-        * `bye`: Saves current list into storage file and exits application.
+        * `save`: Saves current list into duke.storage file.
+        * `bye`: Saves current list into duke.storage file and exits application.
 1. Refer to Features below for more commands and their details.
 
 ## Features
@@ -99,7 +99,7 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
 Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
 --------------------------------------------------------------------------------------------
 ```
-   >This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
+   >This implies that a file name duke.txt has been created as a duke.storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
    >This file will only be created once.
   
    
@@ -182,13 +182,13 @@ Do check file source if there is a corruption of data!
 Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
-   * The block of error message implies that there is a line of code between task example2 and example3 in the storage file duke.txt that the program cannot decode.
+   * The block of error message implies that there is a line of code between task example2 and example3 in the duke.storage file duke.txt that the program cannot decode.
    * The other lines that the program can decode would be added into list. And program is ready for input.
    * To solve the error, the user is required to open duke.txt and check for the error.
    * If the issue is due to an error in the input in duke.txt, the user will have to re-enter the task into the list via `todo`, `deadline` or `event`.
    * Else if the issue is due to an unwanted line, it can be ignored.
    * Do note that the program will not keep the line in which there was an error in the Duke program.
-      * The whole storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
+      * The whole duke.storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
       
    
    The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 

@@ -1,22 +1,22 @@
-package parser;
+package duke.parser;
 
 import duke.Duke;
 
 import java.util.Scanner;
 
-import static ui.Ui.displayByeMessage;
-import static ui.Ui.displayCaseEmptyInput;
-import static ui.Ui.displayDeadlineError;
-import static ui.Ui.displayDeleteMessage;
-import static ui.Ui.displayDone;
-import static ui.Ui.displayEventError;
-import static ui.Ui.displayExceptionMessage;
-import static ui.Ui.displayFind;
-import static ui.Ui.displayHelpMessage;
-import static ui.Ui.displayList;
-import static ui.Ui.displaySaveMessage;
-import static ui.Ui.displayStringIndexOutOfBoundsExceptionMessage;
-import static ui.Ui.displayToDo;
+import static duke.ui.Ui.displayByeMessage;
+import static duke.ui.Ui.displayCaseEmptyInput;
+import static duke.ui.Ui.displayDeadlineError;
+import static duke.ui.Ui.displayDeleteMessage;
+import static duke.ui.Ui.displayDone;
+import static duke.ui.Ui.displayEventError;
+import static duke.ui.Ui.displayExceptionMessage;
+import static duke.ui.Ui.displayFind;
+import static duke.ui.Ui.displayHelpMessage;
+import static duke.ui.Ui.displayList;
+import static duke.ui.Ui.displaySaveMessage;
+import static duke.ui.Ui.displayStringIndexOutOfBoundsExceptionMessage;
+import static duke.ui.Ui.displayToDo;
 
 /**
  * Deals with making sense of the user command.

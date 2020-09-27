@@ -9,10 +9,10 @@ import java.lang.String;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-import static storage.Storage.DEFAULT_STORAGE_FILEPATH;
-import static ui.Ui.displayWelcomeMessage;
-import static storage.Storage.loadFile;
-import static parser.Parser.decideAction;
+import static duke.storage.Storage.DEFAULT_STORAGE_FILEPATH;
+import static duke.ui.Ui.displayWelcomeMessage;
+import static duke.storage.Storage.loadFile;
+import static duke.parser.Parser.decideAction;
 
 /**
  * Entry point of the Duke application.

@@ -1,4 +1,4 @@
-package storage;
+package duke.storage;
 
 import duke.Duke;
 import duke.task.Deadline;
@@ -10,13 +10,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static ui.Ui.displayIOExceptionMessage;
-import static ui.Ui.displayReadFromError;
-import static ui.Ui.drawLines;
-import static ui.Ui.printListIndex;
+import static duke.ui.Ui.displayIOExceptionMessage;
+import static duke.ui.Ui.displayReadFromError;
+import static duke.ui.Ui.drawLines;
+import static duke.ui.Ui.printListIndex;
 
 /**
- * Decodes the storage data file into {@code Task} objects.
+ * Decodes the duke.storage data file into {@code Task} objects.
  */
 public class ReadFromFile extends Duke {
     public static final String DONE = "1";
@@ -24,8 +24,8 @@ public class ReadFromFile extends Duke {
     public static final int ERROR = -1;
 
     /**
-     * Creates a storage file "duke.txt" if file does not exist.
-     * Decodes data from storage into {@code Task}.
+     * Creates a duke.storage file "duke.txt" if file does not exist.
+     * Decodes data from duke.storage into {@code Task}.
      *
      * @param listIndex Number of tasks in list.
      * @throws StringIndexOutOfBoundsException If there is a deviation from allowed data format.
@@ -53,11 +53,11 @@ public class ReadFromFile extends Duke {
     }
 
     /**
-     * Determines the task type of each line read from storage file.
+     * Determines the task type of each line read from duke.storage file.
      *
      * @param listIndex Number of tasks in list.
-     * @param scanner Line of data read by scanner from storage file.
-     * @return Number of tasks in storage file added to list.
+     * @param scanner Line of data read by scanner from duke.storage file.
+     * @return Number of tasks in duke.storage file added to list.
      */
     private static int readTaskTypeFromFile(int listIndex, Scanner scanner) {
         String userInput = scanner.nextLine();

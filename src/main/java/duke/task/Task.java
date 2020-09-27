@@ -47,7 +47,7 @@ public class Task {
     }
 
     /**
-     * Returns String to be written into storage file.
+     * Returns String to be written into duke.storage file.
      */
     public String toFileString() {
         return " " + (isDone ? 1 : 0) + " " + description;

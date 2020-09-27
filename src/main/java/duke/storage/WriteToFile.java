@@ -1,15 +1,15 @@
-package storage;
+package duke.storage;
 
 import duke.Duke;
 import duke.task.Task;
 
 import java.io.FileWriter;
 
-import static storage.Storage.DEFAULT_STORAGE_FILEPATH;
-import static ui.Ui.displayWriteToFileException;
+import static duke.storage.Storage.DEFAULT_STORAGE_FILEPATH;
+import static duke.ui.Ui.displayWriteToFileException;
 
 /**
- * Encodes the {@code Task} objects into a data file for storage.
+ * Encodes the {@code Task} objects into a data file for duke.storage.
  */
 public class WriteToFile extends Duke {
     /**

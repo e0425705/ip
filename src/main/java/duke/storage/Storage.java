@@ -1,12 +1,12 @@
-package storage;
+package duke.storage;
 
 import java.io.File;
 
-import static storage.ReadFromFile.readFromFile;
-import static storage.WriteToFile.writeToFile;
+import static duke.storage.ReadFromFile.readFromFile;
+import static duke.storage.WriteToFile.writeToFile;
 
 /**
- * Deals with loading tasks from storage file and saving tasks in storage file.
+ * Deals with loading tasks from duke.storage file and saving tasks in duke.storage file.
  */
 public class Storage {
 

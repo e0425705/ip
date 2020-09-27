@@ -1,16 +1,16 @@
-package ui;
+package duke.ui;
 
 import duke.Duke;
 import duke.task.Task;
 
 import java.io.IOException;
 
-import static tasklist.TaskList.addDeadline;
-import static tasklist.TaskList.addEvent;
-import static tasklist.TaskList.addToDo;
-import static tasklist.TaskList.deleteTask;
-import static storage.Storage.saveFile;
-import static tasklist.TaskList.findKeyword;
+import static duke.tasklist.TaskList.addDeadline;
+import static duke.tasklist.TaskList.addEvent;
+import static duke.tasklist.TaskList.addToDo;
+import static duke.tasklist.TaskList.deleteTask;
+import static duke.storage.Storage.saveFile;
+import static duke.tasklist.TaskList.findKeyword;
 
 /**
  * Deals with interactions with the user.

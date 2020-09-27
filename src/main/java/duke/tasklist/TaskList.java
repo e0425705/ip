@@ -1,4 +1,4 @@
-package tasklist;
+package duke.tasklist;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -11,9 +11,9 @@ import duke.task.Task;
 import duke.task.ToDo;
 
 import static java.util.stream.Collectors.toList;
-import static ui.Ui.drawLines;
-import static ui.Ui.printListIndex;
-import static ui.Ui.printOutput;
+import static duke.ui.Ui.drawLines;
+import static duke.ui.Ui.printListIndex;
+import static duke.ui.Ui.printOutput;
 
 /**
  * Contains task list.
