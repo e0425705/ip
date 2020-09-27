@@ -90,7 +90,7 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
     deadline x /by DATETIME - x is the task description and y is the deadline date and time
     event x /at DATETIME - x is the task description and y is the event date and time
         Format for DATETIME is YYYY-MM-DDtHHmm, where
-        Y = year, M = month, D = day, H = hour, m = minute
+        YYYY = year, MM = month, DD = day, HH = hour, mm = minute
     delete x - removes the task located at index x of the list
     find y - looks for task description with y included
     save - this saves the current list
@@ -127,7 +127,7 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
    	deadline x /by DATETIME - x is the task description and y is the deadline date and time
    	event x /at DATETIME - x is the task description and y is the event date and time
    		Format for DATETIME is YYYY-MM-DDtHHmm, where
-   		Y = year, M = month, D = day, H = hour, m = minute
+   		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
    	delete x - removes the task located at index x of the list
     find y - looks for task description with y included
    	save - this saves the current list
@@ -166,7 +166,7 @@ The expected format of input values:
    	deadline x /by DATETIME - x is the task description and y is the deadline date and time
    	event x /at DATETIME - x is the task description and y is the event date and time
    		Format for DATETIME is YYYY-MM-DDtHHmm, where
-   		Y = year, M = month, D = day, H = hour, m = minute
+   		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
    	delete x - removes the task located at index x of the list
     find y - looks for task description with y included
    	save - this saves the current list
@@ -449,7 +449,7 @@ The expected format of input values:
 	deadline x /by DATETIME - x is the task description and y is the deadline date and time
 	event x /at DATETIME - x is the task description and y is the event date and time
 		Format for DATETIME is YYYY-MM-DDtHHmm, where
-		Y = year, M = month, D = day, H = hour, m = minute
+		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
 	delete x - removes the task located at index x of the list
 	find y - looks for task description with y included
 	save - this saves the current list
