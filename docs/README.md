@@ -34,14 +34,14 @@ Given below are instructions on how to use it.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`.
 
         Here are some commands you can try:
-        * `todo CS2113`: Add "todo CS2113" into the task list.
+        * `todo CS2113`: Add task type todo with task description CS2113 into the list.
         * `list`: Print out the list of all tasks.
-        * `done 2`: Mark the task in index 2 of the list as done, indicated by a tick(✓).
+        * `done 2`: Marks the task in index 2 of the list as done, indicated by a tick(✓).
         * `delete 3`: Deletes the task in index 3 of the list.
         * `find CS`: Searches through task list for description with the CS in it.
         * `help`: Prints out the commands available and their respective formats.
-        * `save`: Saves current list into duke.storage file.
-        * `bye`: Saves current list into duke.storage file and exits application.
+        * `save`: Saves current list into storage file duke.txt.
+        * `bye`: Saves current list into storage file duke.txt and exits application.
 1. Refer to Features below for more commands and their details.
 
 ## Features
@@ -49,9 +49,10 @@ Given below are instructions on how to use it.
 * The other commands available are `list`, `done`, `delete`, `find`, `help`, `save` and `bye`.
 
 >Things to take note of:
-    >*Input that look like `**this**` are parameters to be supplied by user.
-    >*Input format should strictly adhere to the one in the help list or in this user guide.
-    >*Input commands such as `todo`, `list`, `delete`, etc. are not case-sensitive but it is recommeneded to follow format stated in help list or this user guide.
+>* Input that look like `**this**` are parameters to be supplied by user.
+>* Input format should strictly adhere to the one in the help list or in this user guide.
+>* Input commands such as `todo`, `list`, `delete`, etc. are not case-sensitive but it is recommeneded to follow format stated in help list or this user guide.
+>* It is essential to save list via command `save` or `bye` as the list do not autosave to storage file duke.txt.
 
 ## Setting up program in Intellij
 * Prerequisites: JDK 11, update Intellij to the most recent version.
@@ -66,7 +67,7 @@ Given below are instructions on how to use it.
    1. Select the project directory, and click `OK`
    1. If there are any further prompts, accept the defaults.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`. 
-   For first time user, if the setup is correct, the following would be printed out:
+  For first time user, if the setup is correct, the following would be printed out:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -99,11 +100,11 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
 Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
 --------------------------------------------------------------------------------------------
 ```
-   >This implies that a file name duke.txt has been created as a duke.storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
-   >This file will only be created once.
+>This implies that a file name duke.txt has been created as a duke.storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
+>This file will only be created once.
   
    
-   For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
+  For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -182,17 +183,17 @@ Do check file source if there is a corruption of data!
 Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
-   * The block of error message implies that there is a line of code between task example2 and example3 in the duke.storage file duke.txt that the program cannot decode.
+   * The block of error message implies that there is a line of code between task example2 and example3 in the storage file duke.txt that the program cannot decode.
    * The other lines that the program can decode would be added into list. And program is ready for input.
    * To solve the error, the user is required to open duke.txt and check for the error.
    * If the issue is due to an error in the input in duke.txt, the user will have to re-enter the task into the list via `todo`, `deadline` or `event`.
    * Else if the issue is due to an unwanted line, it can be ignored.
    * Do note that the program will not keep the line in which there was an error in the Duke program.
-      * The whole duke.storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
+      * The whole storage file duke.txt would be overwritten by the current list in the program when `save` or `bye` command is inputted.
       
    
    The "Commands available:..." provides the help list to first time users. This also can be used as reference to users who forget what are the commands available and their format. 
-      * It can be printed out once again with the command `help`.
+   It can be printed out once again with the command `help`.
    
 ## Adding a task type todo
 Adds a task of type todo to the list.
@@ -200,7 +201,7 @@ Adds a task of type todo to the list.
 Format: `todo **TASK_DESCRIPTION**`
 
 Parameters:
-* `**TASK_DESCRIPTION**`: Task description
+* `**TASK_DESCRIPTION**`: Description of task.
 
 Examples:
 * `todo study`
@@ -226,9 +227,9 @@ Adds a task of type deadline to the list.
 Format: `deadline **TASK_DESCRIPTION** /by **DATE_TIME**`
 
 Parameters:
-* `**TASK_DESCRIPTION**`: Task description
+* `**TASK_DESCRIPTION**`: Description of task.
 * `**DATE_TIME**`: Date and time in the format YYYY-MM-DDtHHmm, 
-* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute.
 
 Examples:
 * `deadline do IP /by 2019-09-08t1700`
@@ -275,9 +276,9 @@ Adds a task of type event to the list.
 Format: `event **TASK_DESCRIPTION** /at **DATE_TIME**`
 
 Parameters:
-* `**TASK_DESCRIPTION**`: Task description
+* `**TASK_DESCRIPTION**`: Description of task.
 * `**DATE_TIME**`: Date and time in the format YYYY-MM-DDtHHmm, 
-* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+* where YYYY = year, MM = month, DD = day, HH = hour, mm = minute.
 
 Examples:
 * `event study CS2113 /at 2016-09-18t1500`
