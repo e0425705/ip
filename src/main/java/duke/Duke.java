@@ -20,6 +20,8 @@ import static duke.parser.Parser.decideAction;
  */
 public class Duke {
     public static ArrayList<Task> tasks = new ArrayList<>();
+
+    /** Initialises variable */
     public static final int INITIALISE = 0;
 
     /**

@@ -17,8 +17,13 @@ import static duke.tasklist.TaskList.findKeyword;
  * Deals with interactions with the user.
  */
 public class Ui extends Duke {
+    /** Maximum array size */
     public static final int MAXIMUM = 100;
+
+    /** Length of the word find */
     public static final int LENGTH_OF_WORD_FIND = 4;
+
+    /** Check if variable is singular or plural */
     public static final int SINGULAR = 1;
 
     /**

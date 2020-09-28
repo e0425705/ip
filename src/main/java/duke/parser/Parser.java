@@ -22,6 +22,7 @@ import static duke.ui.Ui.displayToDo;
  * Deals with making sense of the user command.
  */
 public class Parser extends Duke {
+    /** Accesses the command type input by user */
     public static final int COMMAND = 0;
 
     /**

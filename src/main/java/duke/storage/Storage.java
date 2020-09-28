@@ -9,7 +9,6 @@ import static duke.storage.WriteToFile.writeToFile;
  * Deals with loading tasks from duke.storage file and saving tasks to duke.storage file.
  */
 public class Storage {
-
     /** Default file path used for user */
     public static final String DEFAULT_STORAGE_FILEPATH = "duke.txt";
 

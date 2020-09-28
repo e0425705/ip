@@ -19,11 +19,22 @@ import static duke.ui.Ui.printListIndex;
  * Decodes the duke.storage data file into {@code Task} objects.
  */
 public class ReadFromFile extends Duke {
+    /** Checks if the task is mark as done in duke.storage file */
     public static final String DONE = "1";
+
+    /** Checks if the task is not mark as done in duke.storage file */
     public static final String NOT_DONE = "0";
+
+    /** Default indicator of an error */
     public static final int ERROR = -1;
+
+    /** Checks the task type */
     public static final int TASK_TYPE = 0;
+
+    /** Index of where the task done is stored in duke.storage file */
     public static final int TASK_DONE = 1;
+
+    /** Start of task description */
     public static final int TASK_DESCRIPTION = 4;
 
     /**

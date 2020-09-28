@@ -1,5 +1,8 @@
 package duke.task;
 
+import static duke.storage.ReadFromFile.DONE;
+import static duke.storage.ReadFromFile.NOT_DONE;
+
 /**
  * Represents a Task in the list.
  */
@@ -50,6 +53,6 @@ public class Task {
      * Returns String to be written into duke.storage file.
      */
     public String toFileString() {
-        return " " + (isDone ? 1 : 0) + " " + description;
+        return " " + (isDone ? DONE : NOT_DONE) + " " + description;
     }
 }

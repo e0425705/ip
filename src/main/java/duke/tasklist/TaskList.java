@@ -23,15 +23,34 @@ import static duke.ui.Ui.printAddTaskToList;
  * and to process date and time input by user for task type {@code Deadline} and {@code Event}.
  */
 public class TaskList extends Duke {
+    /** Length of the word todo */
     public static final int LENGTH_OF_WORD_TODO = 4;
+
+    /** Length of the word event */
     public static final int LENGTH_OF_WORD_EVENT = 5;
+
+    /** Length of the word deadline */
     public static final int LENGTH_OF_WORD_DEADLINE = 8;
-    public static final int LENGTH_OF_DATE_SEPARATOR = 3    ;
+
+    /** Length of the word line separator /at or /by */
+    public static final int LENGTH_OF_DATE_TIME_SEPARATOR = 3;
+
+    /** Number of minutes in an hour */
     public static final int MINUTES_IN_AN_HOUR = 60;
+
+    /** Midnight in terms of the 24-hours clock */
     public static final int MIDNIGHT = 0000;
+
+    /** The last minute before a new day starts in terms of the 24-hours clock */
     public static final int LAST_MINUTE_OF_THE_DAY = 2359;
+
+    /** Displays hundred in integer form */
     public static final int HUNDRED = 100;
+
+    /** Adds a space */
     public static final String SPACE = " ";
+
+    /** Adds a comma */
     public static final String COMMA = ", ";
 
     /**
@@ -62,7 +81,7 @@ public class TaskList extends Duke {
     public static int addEvent(String userInput, int listIndex) {
         userInput = userInput.substring(LENGTH_OF_WORD_EVENT).trim();
         int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_SEPARATOR).trim();
+        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_TIME_SEPARATOR).trim();
 
         if (processDateTime(dateInput).equals("error")) {
             return ERROR;
@@ -89,7 +108,7 @@ public class TaskList extends Duke {
     public static int addDeadline(String userInput, int listIndex) {
         userInput = userInput.substring(LENGTH_OF_WORD_DEADLINE).trim();
         int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_SEPARATOR).trim();
+        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_TIME_SEPARATOR).trim();
 
         if (processDateTime(dateInput).equals("error")) {
             return ERROR;
