@@ -22,6 +22,8 @@ public class Task {
 
     /**
      * Returns description of the task.
+     *
+     * @return Task description.
      */
     public String getDescription() {
         return description;
@@ -35,8 +37,9 @@ public class Task {
     }
 
     /**
-     * Returns corresponding icon after checking
-     * with @param isDone.
+     * Returns corresponding symbol after checking with variable isDone.
+     *
+     * @return Symbol of either a tick or cross.
      */
     public String getStatusIcon() {
         return (isDone ? "\u2713" : "\u2718"); // return tick or X symbols
@@ -44,6 +47,8 @@ public class Task {
 
     /**
      * Returns String to be printed out in list.
+     *
+     * @return String printed out in list.
      */
     public String toString() {
         return "[" + getStatusIcon() + "] " + description;
@@ -51,6 +56,8 @@ public class Task {
 
     /**
      * Returns String to be written into duke.storage file.
+     *
+     * @return String written to duke.storage file.
      */
     public String toFileString() {
         return " " + (isDone ? DONE : NOT_DONE) + " " + description;

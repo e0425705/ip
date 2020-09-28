@@ -16,7 +16,7 @@ import static duke.parser.Parser.decideAction;
 
 /**
  * Entry point of the Duke application.
- * Initializes the application and starts the interaction with the user.
+ * Initialises the application and starts the interaction with the user.
  */
 public class Duke {
     public static ArrayList<Task> tasks = new ArrayList<>();
