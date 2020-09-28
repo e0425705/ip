@@ -22,6 +22,8 @@ import static duke.ui.Ui.displayToDo;
  * Deals with making sense of the user command.
  */
 public class Parser extends Duke {
+    public static final int COMMAND = 0;
+
     /**
      * Parses user input into command for execution.
      * Returns updated index of list so that it can be updated in Duke.main.
@@ -37,30 +39,30 @@ public class Parser extends Duke {
             String userInput = input.nextLine();
             String[] givenCommand = userInput.split(" ");
 
-            givenCommand[0] = parseToLowerCase(givenCommand[0]);
+            givenCommand[COMMAND] = parseToLowerCase(givenCommand[COMMAND]);
             try {
                 if (userInput.trim().isEmpty()) {
                     displayCaseEmptyInput();
-                } else if (givenCommand[0].equals("list")) {
+                } else if (givenCommand[COMMAND].equals("list")) {
                     displayList(listIndex);
-                } else if (givenCommand[0].equals("done")) {
+                } else if (givenCommand[COMMAND].equals("done")) {
                     displayDone(givenCommand[1]);
-                } else if (givenCommand[0].equals("todo")) {
+                } else if (givenCommand[COMMAND].equals("todo")) {
                     listIndex = displayToDo(userInput, listIndex);
-                } else if (givenCommand[0].equals("deadline")) {
+                } else if (givenCommand[COMMAND].equals("deadline")) {
                     listIndex = displayDeadlineError(userInput, listIndex);
-                } else if (givenCommand[0].equals("event")) {
+                } else if (givenCommand[COMMAND].equals("event")) {
                     listIndex = displayEventError(userInput, listIndex);
-                } else if (givenCommand[0].trim().equals("bye")) {
+                } else if (givenCommand[COMMAND].trim().equals("bye")) {
                     displayByeMessage();
                     break;
-                } else if (givenCommand[0].trim().equals("save")) {
+                } else if (givenCommand[COMMAND].trim().equals("save")) {
                     displaySaveMessage();
-                } else if (givenCommand[0].trim().equals("find")) {
+                } else if (givenCommand[COMMAND].trim().equals("find")) {
                     displayFind(userInput, listIndex);
-                } else if (givenCommand[0].trim().equals("help")) {
+                } else if (givenCommand[COMMAND].trim().equals("help")) {
                     displayHelpMessage();
-                } else if (givenCommand[0].trim().equals("delete")) {
+                } else if (givenCommand[COMMAND].trim().equals("delete")) {
                     listIndex = displayDeleteMessage(listIndex, givenCommand[1]);
                 } else {
                     displayExceptionMessage();

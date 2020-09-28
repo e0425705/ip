@@ -20,8 +20,11 @@ import static duke.ui.Ui.printListIndex;
  */
 public class ReadFromFile extends Duke {
     public static final String DONE = "1";
-    public static final String NOTDONE = "0";
+    public static final String NOT_DONE = "0";
     public static final int ERROR = -1;
+    public static final int TASK_TYPE = 0;
+    public static final int TASK_DONE = 1;
+    public static final int TASK_DESCRIPTION = 4;
 
     /**
      * Creates a duke.storage file "duke.txt" if file does not exist.
@@ -63,15 +66,15 @@ public class ReadFromFile extends Duke {
     private static int readTaskTypeFromFile(int listIndex, Scanner scanner) {
         String userInput = scanner.nextLine();
         String[] savedCommand = userInput.split(" ");
-        if (savedCommand[0].equals("T")) {
+        if (savedCommand[TASK_TYPE].equals("T")) {
             if (!(readToDoFromFile(listIndex, userInput, savedCommand) == ERROR)) {
                 listIndex++;
             }
-        } else if (savedCommand[0].equals("E")) {
+        } else if (savedCommand[TASK_TYPE].equals("E")) {
             if (!(readEventFromFile(listIndex, userInput, savedCommand) == ERROR)) {
                 listIndex++;
             }
-        } else if (savedCommand[0].equals("D")) {
+        } else if (savedCommand[TASK_TYPE].equals("D")) {
             if (!(readDeadlineFromFile(listIndex, userInput, savedCommand) == ERROR)) {
                 listIndex++;
             }
@@ -94,20 +97,20 @@ public class ReadFromFile extends Duke {
      */
     private static int readDeadlineFromFile(int listIndex, String userInput, String[] savedCommand) {
         int separationIndexOfDeadline = userInput.indexOf('|');
-        if (!(savedCommand[1].equals(NOTDONE)) && !(savedCommand[1].equals(DONE))) {
+        if (!(savedCommand[TASK_DONE].equals(NOT_DONE)) && !(savedCommand[TASK_DONE].equals(DONE))) {
             displayReadFromError();
             return ERROR;
-        } else if (separationIndexOfDeadline == -1) {
+        } else if (separationIndexOfDeadline == ERROR) {
             displayReadFromError();
             return ERROR;
         }
 
         String byInput = userInput.substring(separationIndexOfDeadline + 1).trim();
-        userInput = userInput.substring(4, separationIndexOfDeadline - 1);
+        userInput = userInput.substring(TASK_DESCRIPTION, separationIndexOfDeadline - 1);
         Task inputDescription = new Deadline(userInput, byInput);
         tasks.add(inputDescription);
 
-        if (savedCommand[1].equals(DONE)) {
+        if (savedCommand[TASK_DONE].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
         }
         System.out.println("\t" + tasks.get(listIndex++).toString());
@@ -128,20 +131,20 @@ public class ReadFromFile extends Duke {
      */
     private static int readEventFromFile(int listIndex, String userInput, String[] savedCommand) {
         int separationIndexOfEvent = userInput.indexOf('|');
-        if (!(savedCommand[1].equals(NOTDONE)) && !(savedCommand[1].equals(DONE))) {
+        if (!(savedCommand[TASK_DONE].equals(NOT_DONE)) && !(savedCommand[TASK_DONE].equals(DONE))) {
             displayReadFromError();
             return ERROR;
-        } else if (separationIndexOfEvent == -1) {
+        } else if (separationIndexOfEvent == ERROR) {
             displayReadFromError();
             return ERROR;
         }
 
         String atInput = userInput.substring(separationIndexOfEvent + 1).trim();
-        userInput = userInput.substring(4, separationIndexOfEvent - 1);
+        userInput = userInput.substring(TASK_DESCRIPTION, separationIndexOfEvent - 1);
         Task inputDescription = new Event(userInput, atInput);
         tasks.add(inputDescription);
 
-        if (savedCommand[1].equals(DONE)) {
+        if (savedCommand[TASK_DONE].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
         }
         System.out.println("\t" + tasks.get(listIndex++).toString());
@@ -161,16 +164,16 @@ public class ReadFromFile extends Duke {
      * @return ListIndex increment by 1 and with task type {@code ToDo} with attributes added to list.
      */
     private static int readToDoFromFile(int listIndex, String userInput, String[] savedCommand) {
-        if (!(savedCommand[1].equals(NOTDONE)) && !(savedCommand[1].equals(DONE))) {
+        if (!(savedCommand[TASK_DONE].equals(NOT_DONE)) && !(savedCommand[TASK_DONE].equals(DONE))) {
             displayReadFromError();
             return ERROR;
         }
 
-        userInput = userInput.substring(4);
+        userInput = userInput.substring(TASK_DESCRIPTION);
         Task inputDescription = new ToDo(userInput);
         tasks.add(inputDescription);
 
-        if (savedCommand[1].equals(DONE)) {
+        if (savedCommand[TASK_DONE].equals(DONE)) {
             tasks.get(listIndex).markAsDone();
         }
         System.out.println("\t" + tasks.get(listIndex++).toString());

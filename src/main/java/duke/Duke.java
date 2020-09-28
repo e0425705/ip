@@ -20,6 +20,7 @@ import static duke.parser.Parser.decideAction;
  */
 public class Duke {
     public static ArrayList<Task> tasks = new ArrayList<>();
+    public static final int INITIALISE = 0;
 
     /**
      * Runs the program until termination whereby "bye" is input by user.
@@ -27,8 +28,7 @@ public class Duke {
     public static void main(String[] args) {
         displayWelcomeMessage();
 
-        // Current number of tasks in list.
-        int listIndex = 0;
+        int listIndex = INITIALISE;
 
         File file = new File(DEFAULT_STORAGE_FILEPATH);
         listIndex = loadFile(file, listIndex);

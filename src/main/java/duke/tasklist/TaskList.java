@@ -10,10 +10,11 @@ import duke.task.Event;
 import duke.task.Task;
 import duke.task.ToDo;
 
+import static duke.storage.ReadFromFile.ERROR;
 import static java.util.stream.Collectors.toList;
 import static duke.ui.Ui.drawLines;
 import static duke.ui.Ui.printListIndex;
-import static duke.ui.Ui.printOutput;
+import static duke.ui.Ui.printAddTaskToList;
 
 /**
  * Contains task list.
@@ -22,6 +23,17 @@ import static duke.ui.Ui.printOutput;
  * and to process date and time input by user for task type {@code Deadline} and {@code Event}.
  */
 public class TaskList extends Duke {
+    public static final int LENGTH_OF_WORD_TODO = 4;
+    public static final int LENGTH_OF_WORD_EVENT = 5;
+    public static final int LENGTH_OF_WORD_DEADLINE = 8;
+    public static final int LENGTH_OF_DATE_SEPARATOR = 3    ;
+    public static final int MINUTES_IN_AN_HOUR = 60;
+    public static final int MIDNIGHT = 0000;
+    public static final int LAST_MINUTE_OF_THE_DAY = 2359;
+    public static final int HUNDRED = 100;
+    public static final String SPACE = " ";
+    public static final String COMMA = ", ";
+
     /**
      * Adds a ToDO type task to the list.
      *
@@ -30,10 +42,10 @@ public class TaskList extends Duke {
      * @return Updated listIndex.
      */
     public static int addToDo(String userInput, int listIndex) {
-        userInput = userInput.substring(4).trim();
+        userInput = userInput.substring(LENGTH_OF_WORD_TODO).trim();
         Task inputDescription = new ToDo(userInput);
         tasks.add(inputDescription);
-        listIndex = printOutput(listIndex);
+        listIndex = printAddTaskToList(listIndex);
 
         return listIndex;
     }
@@ -48,18 +60,18 @@ public class TaskList extends Duke {
      * @return Updated listIndex if there is no error.
      */
     public static int addEvent(String userInput, int listIndex) {
-        userInput = userInput.substring(5).trim();
+        userInput = userInput.substring(LENGTH_OF_WORD_EVENT).trim();
         int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + 3).trim();
+        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_SEPARATOR).trim();
 
         if (processDateTime(dateInput).equals("error")) {
-            return -1;
+            return ERROR;
         } else {
             dateInput = processDateTime(dateInput);
-            userInput = userInput.substring(0, byIndex - 1);
+            userInput = userInput.substring(INITIALISE, byIndex - 1);
             Task inputDescription = new Event(userInput, dateInput);
             tasks.add(inputDescription);
-            listIndex = printOutput(listIndex);
+            listIndex = printAddTaskToList(listIndex);
         }
 
         return listIndex;
@@ -75,18 +87,18 @@ public class TaskList extends Duke {
      * @return Updated listIndex if there is no error.
      */
     public static int addDeadline(String userInput, int listIndex) {
-        userInput = userInput.substring(8).trim();
+        userInput = userInput.substring(LENGTH_OF_WORD_DEADLINE).trim();
         int byIndex = userInput.indexOf('/');
-        String dateInput = userInput.substring(byIndex + 3).trim();
+        String dateInput = userInput.substring(byIndex + LENGTH_OF_DATE_SEPARATOR).trim();
 
         if (processDateTime(dateInput).equals("error")) {
-            return -1;
+            return ERROR;
         } else {
             dateInput = processDateTime(dateInput);
-            userInput = userInput.substring(0, byIndex - 1);
+            userInput = userInput.substring(INITIALISE, byIndex - 1);
             Task inputDescription = new Deadline(userInput, dateInput);
             tasks.add(inputDescription);
-            listIndex = printOutput(listIndex);
+            listIndex = printAddTaskToList(listIndex);
         }
 
         return listIndex;
@@ -103,22 +115,22 @@ public class TaskList extends Duke {
      */
     public static String processDateTime(String dateTimeInput) {
         int indexOfT = dateTimeInput.indexOf('t');
-        if (indexOfT == -1) {
+        if (indexOfT == ERROR) {
             return "error";
         }
 
-        String dateInput = dateTimeInput.substring(0, indexOfT);
-        String timeInput = dateTimeInput.substring(indexOfT + 1);
+        String dateInput = dateTimeInput.substring(INITIALISE, indexOfT);
+        String timeInput = dateTimeInput.substring(++indexOfT);
         int time = Integer.parseInt(timeInput);
 
         try {
             LocalDate data = LocalDate.parse(dateInput);
-            String day = data.getDayOfMonth() + " ";
-            String month = data.getMonth() + " ";
-            String year = data.getYear() + ", ";
-            if (time < 0000 || time >= 2400) {
+            String day = data.getDayOfMonth() + SPACE;
+            String month = data.getMonth() + SPACE;
+            String year = data.getYear() + COMMA;
+            if (time < MIDNIGHT || time > LAST_MINUTE_OF_THE_DAY) {
                 return "error";
-            } else if (time%100 > 60) {
+            } else if (time % HUNDRED > MINUTES_IN_AN_HOUR) {
                 return "error";
             }
             String output = day + month + year + timeInput;

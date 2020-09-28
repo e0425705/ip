@@ -5,6 +5,7 @@ import duke.task.Task;
 
 import java.io.IOException;
 
+import static duke.storage.ReadFromFile.ERROR;
 import static duke.tasklist.TaskList.addDeadline;
 import static duke.tasklist.TaskList.addEvent;
 import static duke.tasklist.TaskList.addToDo;
@@ -16,6 +17,10 @@ import static duke.tasklist.TaskList.findKeyword;
  * Deals with interactions with the user.
  */
 public class Ui extends Duke {
+    public static final int MAXIMUM = 100;
+    public static final int LENGTH_OF_WORD_FIND = 4;
+    public static final int SINGULAR = 1;
+
     /**
      * Prints out Duke logo.
      */
@@ -41,7 +46,7 @@ public class Ui extends Duke {
     /**
      * Prints out acknowledgement of adding task to list.
      */
-    public static int printOutput(int listIndex) {
+    public static int printAddTaskToList(int listIndex) {
         drawLines();
         System.out.println("Got it. I've added this task:");
         System.out.println("\t" + tasks.get(listIndex++).toString());
@@ -57,7 +62,8 @@ public class Ui extends Duke {
      * @param listIndex Current number of tasks in list.
      */
     public static void printListIndex(int listIndex) {
-        System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
+        System.out.println("Now you have " + listIndex + ((listIndex > SINGULAR) ? " tasks" : " task")
+                + " in the list");
     }
 
     /**
@@ -94,9 +100,9 @@ public class Ui extends Duke {
      */
     public static void displayList(int listIndex) {
         drawLines();
-        System.out.print("Here" + ((listIndex > 1) ? " are" : " is") + " the");
-        System.out.println(((listIndex > 1) ? " tasks" : " task") + " in the list");
-        for (int j = 0; j < listIndex; j++) {
+        System.out.print("Here" + ((listIndex > SINGULAR) ? " are" : " is") + " the");
+        System.out.println(((listIndex > SINGULAR) ? " tasks" : " task") + " in the list");
+        for (int j = INITIALISE; j < listIndex; j++) {
             System.out.println("\t" + (j + 1) + "." + tasks.get(j).toString());
         }
         drawLines();
@@ -140,7 +146,7 @@ public class Ui extends Duke {
      * @param listIndex Current number of tasks in list.
      */
     public static int displayDeadlineError(String userInput, int listIndex) {
-        if (addDeadline(userInput, listIndex) == -1) {
+        if (addDeadline(userInput, listIndex) == ERROR) {
             drawLines();
             System.out.println("Sorry I do not understand what you mean!\n"
                     + "Do bring out help list via the command 'help' for the specific format!");
@@ -158,7 +164,7 @@ public class Ui extends Duke {
      * @param listIndex Current number of tasks in list.
      */
     public static int displayEventError(String userInput, int listIndex) {
-        if (addEvent(userInput, listIndex) == -1) {
+        if (addEvent(userInput, listIndex) == ERROR) {
             drawLines();
             System.out.println("Sorry I do not understand what you mean!\n"
                     + "Do bring out help list via the command 'help' for the specific format!");
@@ -200,15 +206,15 @@ public class Ui extends Duke {
      * @param listIndex Current number of tasks in list.
      */
     public static void displayFind(String keyword, int listIndex) {
-        keyword = keyword.substring(4).trim();
-        int[] indexesOfKeyword = new int[20];
-        int indexToSaveKeyword = 0;
-        int indexToAccess = 0;
+        keyword = keyword.substring(LENGTH_OF_WORD_FIND).trim();
+        int[] indexesOfKeyword = new int[MAXIMUM];
+        int indexToSaveKeyword = INITIALISE;
+        int indexToAccess = INITIALISE;
 
         drawLines();
         System.out.println("Here are the matching tasks in your list:");
         for (Task t : findKeyword(tasks, keyword)) {
-            for (int i = 0; i < listIndex; i++) {
+            for (int i = INITIALISE; i < listIndex; i++) {
                 if (tasks.get(i).equals(t)) {
                     indexesOfKeyword[indexToSaveKeyword++] = ++i;
                 }
