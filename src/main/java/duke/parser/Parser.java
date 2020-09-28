@@ -24,11 +24,13 @@ import static duke.ui.Ui.displayToDo;
 public class Parser extends Duke {
     /**
      * Parses user input into command for execution.
+     * Returns updated index of list so that it can be updated in Duke.main.
      *
-     * @param input full user input string
+     * @param input     Full user input string.
      * @param listIndex Number of tasks in list.
+     * @return Updated listIndex.
      * @throws StringIndexOutOfBoundsException When user input has missing or erroneous fields.
-     * @throws Exception When user input is not understood.
+     * @throws Exception                       When user input is not understood.
      */
     public static int decideAction(Scanner input, int listIndex) {
         while (true) {

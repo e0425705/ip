@@ -53,6 +53,8 @@ public class Ui extends Duke {
 
     /**
      * Prints out current number of tasks in list.
+     *
+     * @param listIndex Current number of tasks in list.
      */
     public static void printListIndex(int listIndex) {
         System.out.println("Now you have " + listIndex + ((listIndex > 1) ? " tasks" : " task") + " in the list");
@@ -87,6 +89,8 @@ public class Ui extends Duke {
 
     /**
      * Prints out current list of tasks.
+     *
+     * @param listIndex Current number of tasks in list.
      */
     public static void displayList(int listIndex) {
         drawLines();
@@ -100,6 +104,8 @@ public class Ui extends Duke {
 
     /**
      * Prints out message when a task is marked as done by user.
+     *
+     * @param givenCommand Index of task to be marked as done.
      */
     public static void displayDone(String givenCommand) {
         int taskDone = Integer.parseInt(givenCommand);
@@ -112,6 +118,9 @@ public class Ui extends Duke {
 
     /**
      * Prints out message when a {@code ToDo} task is input by user.
+     *
+     * @param userInput String of user input.
+     * @param listIndex Current number of tasks in list.
      */
     public static int displayToDo(String userInput, int listIndex) {
         if (userInput.toLowerCase().trim().equals("todo")) {
@@ -126,6 +135,9 @@ public class Ui extends Duke {
 
     /**
      * Prints out message when a {@code Deadline} task is input by user.
+     *
+     * @param userInput String of user input.
+     * @param listIndex Current number of tasks in list.
      */
     public static int displayDeadlineError(String userInput, int listIndex) {
         if (addDeadline(userInput, listIndex) == -1) {
@@ -141,6 +153,9 @@ public class Ui extends Duke {
 
     /**
      * Prints out message when an {@code Event} task is input by user.
+     *
+     * @param userInput String of user input.
+     * @param listIndex Current number of tasks in list.
      */
     public static int displayEventError(String userInput, int listIndex) {
         if (addEvent(userInput, listIndex) == -1) {
@@ -182,6 +197,7 @@ public class Ui extends Duke {
      * Prints out tasks that contains the keyword.
      *
      * @param keyword String that user is looking for in current list.
+     * @param listIndex Current number of tasks in list.
      */
     public static void displayFind(String keyword, int listIndex) {
         keyword = keyword.substring(4).trim();
@@ -228,6 +244,7 @@ public class Ui extends Duke {
     /**
      * Prints out acknowledgement that task at index listIndex is deleted.
      *
+     * @param listIndex Current number of tasks in list.
      * @param deleteListIndex Index in the list to be deleted.
      */
     public static int displayDeleteMessage(int listIndex, String deleteListIndex) {

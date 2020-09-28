@@ -6,7 +6,7 @@ import static duke.storage.ReadFromFile.readFromFile;
 import static duke.storage.WriteToFile.writeToFile;
 
 /**
- * Deals with loading tasks from duke.storage file and saving tasks in duke.storage file.
+ * Deals with loading tasks from duke.storage file and saving tasks to duke.storage file.
  */
 public class Storage {
 

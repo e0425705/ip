@@ -23,7 +23,7 @@ public class Duke {
 
     /**
      * Runs the program until termination whereby "bye" is input by user.
-     * */
+     */
     public static void main(String[] args) {
         displayWelcomeMessage();
 
