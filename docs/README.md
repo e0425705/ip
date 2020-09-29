@@ -83,19 +83,19 @@ Hello! I'm Duke.
 What can I do for you today?
 --------------------------------------------------------------------------------------------
 Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-    The expected format of input values: 
-    list - gives the list of data inputted
-    help - this pulls out the commands available
-    done x - x is the index of data that you want to mark as done
-    todo x - x is the task description
-    deadline x /by DATETIME - x is the task description and y is the deadline date and time
-    event x /at DATETIME - x is the task description and y is the event date and time
-        Format for DATETIME is YYYY-MM-DDtHHmm, where
-        YYYY = year, MM = month, DD = day, HH = hour, mm = minute
-    delete x - removes the task located at index x of the list
-    find y - looks for task description with y included
-    save - this saves the current list
-    bye - this terminates the program
+The expected format of input values: 
+	list - gives the list of data inputted
+	help - pulls out the commands available and their input format
+	done x - x is the index of data that you want to mark as done
+	todo x - x is the task description
+	deadline x /by DATETIME - x is the task description and y is the deadline date and time
+	event x /at DATETIME - x is the task description and y is the event date and time
+		Format for DATETIME is YYYY-MM-DDtHHmm, where
+		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+	delete x - removes the task located at index x of the list
+	find x - looks for task description with x included
+	save - saves the current list
+	bye - terminates the program
 --------------------------------------------------------------------------------------------
 Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
 --------------------------------------------------------------------------------------------
@@ -118,21 +118,21 @@ Hello from
 --------------------------------------------------------------------------------------------
 Hello! I'm Duke.
 What can I do for you today?
--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
-    The expected format of input values: 
-    list - gives the list of data inputted
-   	help - this pulls out the commands available
-   	done x - x is the index of data that you want to mark as done
-   	todo x - x is the task description
-   	deadline x /by DATETIME - x is the task description and y is the deadline date and time
-   	event x /at DATETIME - x is the task description and y is the event date and time
-   		Format for DATETIME is YYYY-MM-DDtHHmm, where
-   		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
-   	delete x - removes the task located at index x of the list
-    find y - looks for task description with y included
-   	save - this saves the current list
-   	bye - this terminates the program
+The expected format of input values: 
+	list - gives the list of data inputted
+	help - pulls out the commands available and their input format
+	done x - x is the index of data that you want to mark as done
+	todo x - x is the task description
+	deadline x /by DATETIME - x is the task description and y is the deadline date and time
+	event x /at DATETIME - x is the task description and y is the event date and time
+		Format for DATETIME is YYYY-MM-DDtHHmm, where
+		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+	delete x - removes the task located at index x of the list
+	find x - looks for task description with x included
+	save - saves the current list
+	bye - terminates the program
 --------------------------------------------------------------------------------------------
     [T][✘] example1
     [E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
@@ -160,18 +160,18 @@ What can I do for you today?
 --------------------------------------------------------------------------------------------
 Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
 The expected format of input values: 
-    list - gives the list of data inputted
-    help - this pulls out the commands available
-   	done x - x is the index of data that you want to mark as done
-   	todo x - x is the task description
-   	deadline x /by DATETIME - x is the task description and y is the deadline date and time
-   	event x /at DATETIME - x is the task description and y is the event date and time
-   		Format for DATETIME is YYYY-MM-DDtHHmm, where
-   		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
-   	delete x - removes the task located at index x of the list
-    find y - looks for task description with y included
-   	save - this saves the current list
-   	bye - this terminates the program
+	list - gives the list of data inputted
+	help - pulls out the commands available and their input format
+	done x - x is the index of data that you want to mark as done
+	todo x - x is the task description
+	deadline x /by DATETIME - x is the task description and y is the deadline date and time
+	event x /at DATETIME - x is the task description and y is the event date and time
+		Format for DATETIME is YYYY-MM-DDtHHmm, where
+		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
+	delete x - removes the task located at index x of the list
+	find x - looks for task description with x included
+	save - saves the current list
+	bye - terminates the program
 --------------------------------------------------------------------------------------------
     [T][✘] example1
     [E][✘] example2 (at: 24 SEPTEMBER 2020, 2057)
@@ -445,7 +445,7 @@ Example:
 Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
 The expected format of input values: 
 	list - gives the list of data inputted
-	help - this pulls out the commands available
+	help - pulls out the commands available and their input format
 	done x - x is the index of data that you want to mark as done
 	todo x - x is the task description
 	deadline x /by DATETIME - x is the task description and y is the deadline date and time
@@ -453,9 +453,9 @@ The expected format of input values:
 		Format for DATETIME is YYYY-MM-DDtHHmm, where
 		YYYY = year, MM = month, DD = day, HH = hour, mm = minute
 	delete x - removes the task located at index x of the list
-	find y - looks for task description with y included
-	save - this saves the current list
-	bye - this terminates the program
+	find x - looks for task description with x included
+	save - saves the current list
+	bye - terminates the program
 --------------------------------------------------------------------------------------------
 ```
 
