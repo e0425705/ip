@@ -383,7 +383,7 @@ Examples:
 ```javascript
 --------------------------------------------------------------------------------------------
 Noted. I've removed this task:
-	[T][✘] study
+	[T][✓] study
 Now you have 2 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
@@ -418,7 +418,7 @@ Examples:
 ```javascript
 --------------------------------------------------------------------------------------------
 Here are the matching tasks in your list:
-	1.[D][✘] do IP (by: 8 SEPTEMBER 2019, 1700)
+	2.[E][✘] study CS2113 (at: 18 SEPTEMBER 2016, 1500)
 --------------------------------------------------------------------------------------------
 ```
 
@@ -432,6 +432,8 @@ Here are the matching tasks in your list:
 
 >Things to take note of:
 >* `**TASK_KEYWORD**` is case-sensitive.
+>* the indexes printed out is the index of the respective tasks in the list.
+    >* In the case of the 1st example, the index of `event study CS2113` is found in index 2 of the list.
 
 ## Printing the help list
 Prints out the commands available and their respective input format.

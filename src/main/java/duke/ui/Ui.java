@@ -204,7 +204,7 @@ public class Ui extends Duke {
     }
 
     /**
-     * Prints out tasks that contains the keyword.
+     * Prints out index of the task and the respective task description that contain the keyword.
      *
      * @param keyword String that user is looking for in current list.
      * @param listIndex Current number of tasks in list.
