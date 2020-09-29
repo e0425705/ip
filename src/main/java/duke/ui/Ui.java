@@ -236,7 +236,7 @@ public class Ui extends Duke {
         String help = "Commands available: list, help, done, todo, deadline, event, delete, find, save, bye\n"
                 + "The expected format of input values: \n"
                 + "\tlist - gives the list of data inputted\n"
-                + "\thelp - this pulls out the commands available\n"
+                + "\thelp - pulls out the commands available and their input format\n"
                 + "\tdone x - x is the index of data that you want to mark as done\n"
                 + "\ttodo x - x is the task description\n"
                 + "\tdeadline x /by DATETIME - x is the task description and y is the deadline date and time\n"
@@ -244,9 +244,9 @@ public class Ui extends Duke {
                 + "\t\tFormat for DATETIME is YYYY-MM-DDtHHmm, where\n"
                 + "\t\tYYYY = year, MM = month, DD = day, HH = hour, mm = minute\n"
                 + "\tdelete x - removes the task located at index x of the list\n"
-                + "\tfind y - looks for task description with y included\n"
-                + "\tsave - this saves the current list\n"
-                + "\tbye - this terminates the program";
+                + "\tfind x - looks for task description with x included\n"
+                + "\tsave - saves the current list\n"
+                + "\tbye - terminates the program";
         System.out.println(help);
         drawLines();
     }
