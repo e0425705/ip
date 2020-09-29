@@ -92,7 +92,6 @@ public class TaskList extends Duke {
             tasks.add(inputDescription);
             listIndex = printAddTaskToList(listIndex);
         }
-
         return listIndex;
     }
 
@@ -119,7 +118,6 @@ public class TaskList extends Duke {
             tasks.add(inputDescription);
             listIndex = printAddTaskToList(listIndex);
         }
-
         return listIndex;
     }
 
@@ -153,7 +151,6 @@ public class TaskList extends Duke {
                 return "error";
             }
             String output = day + month + year + timeInput;
-
             return output;
         } catch (DateTimeException e) {
             return "error";

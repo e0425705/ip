@@ -177,7 +177,6 @@ public class Ui extends Duke {
         } else {
             listIndex++;
         }
-
         return listIndex;
     }
 
