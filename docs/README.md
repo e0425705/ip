@@ -34,8 +34,8 @@ Given below are instructions on how to use it.
 1. After the importing is complete, locate the `src/main/java/duke.Duke.java` file, right-click it, and choose `Run duke.Duke.main()`.
 
         Here are some commands you can try:
-        * `todo CS2113`: Add task type todo with task description CS2113 into the list.
-        * `list`: Print out the list of all tasks.
+        * `todo CS2113`: Adds task type todo with task description CS2113 into the list.
+        * `list`: Prints out the list of all tasks.
         * `done 2`: Marks the task in index 2 of the list as done, indicated by a tick(✓).
         * `delete 3`: Deletes the task in index 3 of the list.
         * `find CS`: Searches through task list for description with the CS in it.
@@ -51,7 +51,7 @@ Given below are instructions on how to use it.
 >Things to take note of:
 >* Input that look like `**this**` are parameters to be supplied by user.
 >* Input format should strictly adhere to the one in the help list or in this user guide.
->* Input commands such as `todo`, `list`, `delete`, etc. are not case-sensitive but it is recommeneded to follow format stated in help list or this user guide.
+>* Input commands such as `todo`, `list`, `delete`, etc. are not case-sensitive but it is recommended to follow format stated in help list or this user guide.
 >* It is essential to save list via command `save` or `bye` as the list do not autosave to storage file duke.txt.
 
 ## Setting up program in Intellij
@@ -100,11 +100,11 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
 Created new file C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt
 --------------------------------------------------------------------------------------------
 ```
->This implies that a file name duke.txt has been created as a duke.storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
+>This implies that a file name duke.txt has been created as a storage file, with path C:\Users\PUAH\Desktop\ceg\CS2113T\IP\duke.txt, this path differs for different user and where they save the application. 
 >This file will only be created once.
   
    
-  For none first time user, a list of the task that you have saved in duke.txt would be shown. An example of a successful run can look like:
+  For none first time user, a list of the task that you have saved previously in duke.txt would be shown. An example of a successful run can look like:
    
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -140,7 +140,7 @@ Commands available: list, help, done, todo, deadline, event, delete, find, save,
 Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
-   * In this example, `todo` task example1, `event` task example2 and `deadline` task example3 were loaded from file duke.txt.
+   * In this example, `todo` example1, `event` example2 and `deadline` example3 were loaded from file duke.txt.
    
    
    An example of a run with error can look like:
@@ -184,7 +184,7 @@ Now you have 3 tasks in the list
 --------------------------------------------------------------------------------------------
 ```
    * The block of error message implies that there is a line of code between task example2 and example3 in the storage file duke.txt that the program cannot decode.
-   * The other lines that the program can decode would be added into list. And program is ready for input.
+   * The other lines that the program can decode would be added into list and program is ready for input.
    * To solve the error, the user is required to open duke.txt and check for the error.
    * If the issue is due to an error in the input in duke.txt, the user will have to re-enter the task into the list via `todo`, `deadline` or `event`.
    * Else if the issue is due to an unwanted line, it can be ignored.
@@ -336,6 +336,7 @@ Here are the tasks in the list
 ```
 
 If the list is empty, the following would be printed out:
+* `list`
 ```javascript
 --------------------------------------------------------------------------------------------
 Here is the task in the list
@@ -410,10 +411,9 @@ Find tasks with the keyword included in the task description.
 Format: `find **TASK_KEYWORD**`
 
 Parameters:
-* `**TASK_KEYWORD**`: Keyword to search for in list.
+* `**TASK_KEYWORD**`: Keyword to search for in tasks description in list.
 
 Examples:
-
 * `find do`
 ```javascript
 --------------------------------------------------------------------------------------------
@@ -439,6 +439,7 @@ Prints out the commands available and their respective input format.
 Format: `help`
 
 Example:
+* `help`
 ```javascript
 --------------------------------------------------------------------------------------------
 Commands available: list, help, done, todo, deadline, event, delete, find, save, bye
@@ -464,6 +465,7 @@ Saves current list to file without exiting program.
 Format: `save`
 
 Example:
+* `save`
 ```javascript
 --------------------------------------------------------------------------------------------
 The current list has been saved.
@@ -476,6 +478,7 @@ Saves the current list to file and exits program.
 Format: `bye`
 
 Example:
+* `bye`
 ```javascript
 --------------------------------------------------------------------------------------------
 Bye. It was a pleasure serving you.
